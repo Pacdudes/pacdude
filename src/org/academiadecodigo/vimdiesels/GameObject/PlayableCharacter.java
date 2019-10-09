@@ -61,7 +61,7 @@ public abstract class PlayableCharacter extends GameObject implements KeyboardHa
             switch(keyboardEvent.getKey()){
 
                 case KeyboardEvent.KEY_UP :
-
+                    
                     pos.moveInDirection(GridDirection.UP, speed);
 
                 case KeyboardEvent.KEY_DOWN:
