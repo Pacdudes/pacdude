@@ -9,4 +9,8 @@ public class Ghost extends GameObject {
 
         this.ghost = ghost;
     }
+
+    public void move (){
+
+    }
 }
