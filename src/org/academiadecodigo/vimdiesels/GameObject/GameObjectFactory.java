@@ -7,7 +7,7 @@ import org.academiadecodigo.vimdiesels.PlayableCharacter.Vitinho;
 
 public class GameObjectFactory {
 
-    public static Ghost[] getNewGhost(){
+   /* public static Ghost[] getNewGhost(){
         Ghost[] ghostArray = new Ghost[GhostType.values().length];
 
         for (int i = 0; i < GhostType.values().length ; i++) {
@@ -23,7 +23,6 @@ public class GameObjectFactory {
         PlayableCharacterType player = PlayableCharacterType.values()[(int) Math.random() * PlayableCharacterType.values().length];
 
         PlayableCharacter playableCharacter;
-
         switch (player) {
 
             case ANDE:
@@ -42,6 +41,6 @@ public class GameObjectFactory {
 
         return playableCharacter;
     }
-
+*/
 
 }

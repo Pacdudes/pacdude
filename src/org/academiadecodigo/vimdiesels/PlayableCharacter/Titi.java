@@ -1,15 +1,17 @@
 package org.academiadecodigo.vimdiesels.PlayableCharacter;
 
 import org.academiadecodigo.vimdiesels.GameObject.PlayableCharacter;
+import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
 public class Titi extends PlayableCharacter {
 
     private String name;
     private int health;
     private int speed;
+    private GridPosition pos;
 
-    public Titi(String name, int health, int speed) {
-        super(name, health, speed);
+    public Titi(String name, int health, int speed, GridPosition pos) {
+        super(name, health, speed, pos);
     }
 
     @Override
