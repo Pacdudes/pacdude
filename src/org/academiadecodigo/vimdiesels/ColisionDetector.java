@@ -37,7 +37,7 @@ public class ColisionDetector {
 
             if (objects.get(i) instanceof PlayableCharacter || objects.get(i) instanceof Ghost) {
 
-                if ((objects.get(i).getPos().getCol() == col && objects.get(i).getPos().getRow() == row) {
+                if ((objects.get(i).getPos().getCol() == col && objects.get(i).getPos().getRow() == row)) {
                     return true;
                 }
             }
