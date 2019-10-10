@@ -4,6 +4,7 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.vimdiesels.ColisionDetector;
 import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
@@ -18,6 +19,7 @@ public abstract class PlayableCharacter extends GameObject implements KeyboardHa
     private Keyboard keyboard;
     private GridPosition pos;
     private Grid grid;
+    private ColisionDetector colisionDetector;
 
     public PlayableCharacter(String name, int health, int speed, GridPosition pos) {
         this.name = name;
@@ -26,6 +28,11 @@ public abstract class PlayableCharacter extends GameObject implements KeyboardHa
         this.dead = false;
         this.score = 0;
         this.pos = pos;
+
+    }
+
+    public void setColisionDetector(ColisionDetector colisionDetector) {
+        this.colisionDetector = colisionDetector;
     }
 
     public void move() throws InterruptedException {
@@ -61,20 +68,39 @@ public abstract class PlayableCharacter extends GameObject implements KeyboardHa
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
+                if (!colisionDetector.wallColision(this.pos.getCol(), this.pos.getRow())) {
+                    pos.moveInDirection(GridDirection.UP, speed);
+                    if (!colisionDetector.isUnSafe(this.pos.getCol(), this.pos.getRow())) {
+                        this.die();
+                    }
 
-                pos.moveInDirection(GridDirection.UP, speed);
+                }
+
 
             case KeyboardEvent.KEY_DOWN:
 
-                pos.moveInDirection(GridDirection.DOWN, speed);
+                if (!colisionDetector.wallColision(this.pos.getCol(), this.pos.getRow())) {
+                    pos.moveInDirection(GridDirection.DOWN, speed);
+                    if (colisionDetector.isUnSafe(this.pos.getCol(), this.pos.getRow())) {
+                        this.die();
+                    }
+                }
 
             case KeyboardEvent.KEY_LEFT:
-
-                pos.moveInDirection(GridDirection.LEFT, speed);
+                if (!colisionDetector.wallColision(this.pos.getCol(), this.pos.getRow())) {
+                    pos.moveInDirection(GridDirection.LEFT, speed);
+                    if (colisionDetector.isUnSafe(this.pos.getCol(), this.pos.getRow())) {
+                        this.die();
+                    }
+                }
 
             case KeyboardEvent.KEY_RIGHT:
-
-                pos.moveInDirection(GridDirection.RIGHT, speed);
+                if (!colisionDetector.wallColision(this.pos.getCol(), this.pos.getRow())) {
+                    pos.moveInDirection(GridDirection.RIGHT, speed);
+                    if (colisionDetector.isUnSafe(this.pos.getCol(), this.pos.getRow())) {
+                        this.die();
+                    }
+                }
 
 
         }
