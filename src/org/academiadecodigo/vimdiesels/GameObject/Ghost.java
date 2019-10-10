@@ -1,23 +1,27 @@
 package org.academiadecodigo.vimdiesels.GameObject;
 
+import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
 public class Ghost extends GameObject {
 
-    private GhostType ghost;
+   private String name;
+   private int speed;
+   private GridPosition pos;
+   private Grid grid;
 
-    public Ghost(GhostType ghost, GridPosition position) {
-
-        this.ghost = ghost;
+    public Ghost(String name, int speed, GridPosition pos) {
+        this.name = name;
+        this.speed = speed;
+        this.pos = pos;
     }
-    /*
-    public void move() {
 
+    public move (){
+        /*
         if (isDestroyed()) {
             return;
         }
-        */
-        /*
+
         chooseDirection();
 
         switch (currentDirection) {
@@ -47,24 +51,6 @@ public class Ghost extends GameObject {
                 break;
             default:
         }
+        */
     }
-
-    @Override
-    public void setDestroyed() {
-
-        super.setDestroyed();
-    }
-
-    public void  chooseDirection() {
-        if (currentDirection == null){
-            currentDirection = GridDirection.DOWN;
-        }
-        int randomNumber = (int) (Math.random() * 100);
-
-        if (randomNumber >= 30) {
-            currentDirection = GridDirection.values()[(int) (Math.random() * GridDirection.values().length)];
-        }
-    }
-
-    */
 }
