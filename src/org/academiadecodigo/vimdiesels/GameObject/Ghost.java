@@ -5,10 +5,11 @@ import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
 public class Ghost extends GameObject {
 
-   private String name;
-   private int speed;
-   private GridPosition pos;
-   private Grid grid;
+    private String name;
+    private int speed;
+    private GridPosition pos;
+    private Grid grid;
+    private boolean dead;
 
     public Ghost(String name, int speed, GridPosition pos) {
         this.name = name;
@@ -16,15 +17,15 @@ public class Ghost extends GameObject {
         this.pos = pos;
     }
 
-    public move (){
-        /*
-        if (isDestroyed()) {
+    public move() {
+
+        if (isDead()) {
             return;
         }
 
         chooseDirection();
 
-        switch (currentDirection) {
+        switch (Movement) {
             case LEFT:
                 if (!collisionDetector.isUnSafe(getPos().getCol() - 1, getPos().getRow())) {
                     getPos().moveInDirection(GridDirection.LEFT, 1);
@@ -51,6 +52,7 @@ public class Ghost extends GameObject {
                 break;
             default:
         }
-        */
+
+
     }
 }

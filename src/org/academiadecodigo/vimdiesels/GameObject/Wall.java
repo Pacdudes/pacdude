@@ -7,7 +7,7 @@ public class Wall implements Hitable {
 
     private Wall wall;
 
-    public Wall(GridPosition pos){
+    public Wall(GridPosition pos) {
         this.wall = wall;
     }
 

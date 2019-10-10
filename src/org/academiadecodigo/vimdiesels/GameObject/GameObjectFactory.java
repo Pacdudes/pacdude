@@ -7,10 +7,10 @@ import org.academiadecodigo.vimdiesels.PlayableCharacter.Vitinho;
 
 public class GameObjectFactory {
 
-   public static Ghost[] getNewGhost(){
+    public static Ghost[] getNewGhost() {
         Ghost[] ghostArray = new Ghost[GhostType.values().length];
 
-        for (int i = 0; i < GhostType.values().length ; i++) {
+        for (int i = 0; i < GhostType.values().length; i++) {
 
             ghostArray[i] = new Ghost(GhostType.values()[i]);
 

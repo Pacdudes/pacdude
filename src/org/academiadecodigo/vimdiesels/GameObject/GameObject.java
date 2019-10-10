@@ -5,13 +5,18 @@ import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 public class GameObject {
 
     private GridPosition pos;
+    public boolean dead;
 
-    public GameObject(){
+    public boolean isDead() {
+        return dead = true;
+    }
+
+    public GameObject() {
         this.pos = pos;
     }
 
-    public GridPosition getPos(){
-       return pos;
+    public GridPosition getPos() {
+        return pos;
     }
 
 }
