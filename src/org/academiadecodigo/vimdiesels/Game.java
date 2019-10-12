@@ -1,5 +1,6 @@
 package org.academiadecodigo.vimdiesels;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.vimdiesels.GameObject.*;
 import org.academiadecodigo.vimdiesels.GameObject.Ghosts.Bigotes;
 import org.academiadecodigo.vimdiesels.GameObject.Ghosts.Fernands;
@@ -21,7 +22,7 @@ public class Game {
     private GridType gridType = GridType.SIMPLE_GFX;
     private int cols = 21;
     private int rows = 25;
-    private int cellSize = 15;
+    private int cellSize = 20;
     private int height = rows * cellSize;
     private int width = cols * cellSize;
     private SimpleGfxGrid grid;
@@ -66,14 +67,16 @@ public class Game {
         for (int x = 0; x < cols; x++) {
             for (int y = 0; y < rows; y++) {
 
-                int gameObject = supermap[x][y];
+                int gameObject = supermap[y][x];
 
                 if (gameObject == 0) {
                     Coin coin = new Coin(new SimpleGfxGridPosition(x, y, grid));
+                    coin.getPos().getRectangle().setColor(Color.GRAY);
                     continue;
                 }
                 if (gameObject == 1) {
                     Wall wall = new Wall(new SimpleGfxGridPosition(x, y, grid));
+                    wall.getPos().getRectangle().setColor(Color.PINK);
                     continue;
                 }
                 if (gameObject == 2) {
