@@ -25,7 +25,7 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
     public PlayableCharacter(SimpleGfxGridPosition pos) {
         this.name = name;
         this.health = health;
-        this.speed = speed;
+        this.speed = 1;
         this.dead = false;
         this.score = 0;
         this.pos = pos;
@@ -33,9 +33,9 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
         move();
     }
 
-    public void setColisionDetector(ColisionDetector colisionDetector) {
+    /*public void setColisionDetector(ColisionDetector colisionDetector) {
         this.colisionDetector = colisionDetector;
-    }
+    }*/
 
     public void move() {
 
@@ -76,7 +76,6 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-
 
                 pos.moveInDirection(GridDirection.DOWN, speed);
                 break;
