@@ -10,7 +10,7 @@ import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
-public abstract class PlayableCharacter extends GameObject implements KeyboardHandler {
+public class PlayableCharacter extends GameObject implements KeyboardHandler {
 
     private String name;
     private int health;
@@ -22,7 +22,7 @@ public abstract class PlayableCharacter extends GameObject implements KeyboardHa
     private Grid grid;
     private ColisionDetector colisionDetector;
 
-    public PlayableCharacter(String name, int health, int speed, SimpleGfxGridPosition pos) {
+    public PlayableCharacter(SimpleGfxGridPosition pos) {
         this.name = name;
         this.health = health;
         this.speed = speed;
