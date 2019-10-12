@@ -11,4 +11,8 @@ public class Wall implements Hitable {
         this.wall = wall;
     }
 
+    @Override
+    public boolean isHit() {
+        return false;
+    }
 }

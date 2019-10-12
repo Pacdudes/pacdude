@@ -1,4 +1,10 @@
 package org.academiadecodigo.vimdiesels.menu;
 
-public class MenuOptions {
+public enum MenuOptions {
+
+    START_GAME,
+    QUIT,
+
+
+
 }
