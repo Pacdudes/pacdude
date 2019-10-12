@@ -3,6 +3,7 @@ package org.academiadecodigo.vimdiesels;
 import org.academiadecodigo.vimdiesels.GameObject.GameObject;
 import org.academiadecodigo.vimdiesels.GameObject.Ghost;
 import org.academiadecodigo.vimdiesels.GameObject.PlayableCharacter;
+import org.academiadecodigo.vimdiesels.GameObject.Wall;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
 import java.util.*;
@@ -11,9 +12,11 @@ public class ColisionDetector {
 
 
     private ArrayList<GameObject> objects;
+    private Game game;
 
-    public ColisionDetector(ArrayList<GameObject> objects) {
-        this.objects = objects;
+    public ColisionDetector(Game game) {
+
+        this.objects = game.getObjectlist();
     }
 
     public boolean isUnSafe(int col, int row) {
@@ -44,9 +47,11 @@ public class ColisionDetector {
     public boolean wallColision(int col, int row) {
 
 
-        for (GameObject gameObejct: objects
-             ) {
-            return (gameObejct.getPos().getCol() == col &&  gameObejct.getPos().getRow() == row);
+        for (GameObject gameObejct : objects
+        ) {
+            if (gameObejct instanceof Wall) {
+                return (gameObejct.getPos().getCol() == col && gameObejct.getPos().getRow() == row);
+            }
         }
 
         return false;

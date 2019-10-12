@@ -1,10 +1,5 @@
 package org.academiadecodigo.vimdiesels.GameObject;
 
-import org.academiadecodigo.vimdiesels.PlayableCharacter.Ande;
-import org.academiadecodigo.vimdiesels.PlayableCharacter.Danones;
-import org.academiadecodigo.vimdiesels.PlayableCharacter.Titi;
-import org.academiadecodigo.vimdiesels.PlayableCharacter.Vitinho;
-
 public class GameObjectFactory {
 
     public static Ghost[] getNewGhost() {

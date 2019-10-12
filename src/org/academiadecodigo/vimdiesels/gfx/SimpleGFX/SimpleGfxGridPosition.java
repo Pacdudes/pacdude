@@ -1,5 +1,6 @@
 package org.academiadecodigo.vimdiesels.gfx.SimpleGFX;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.vimdiesels.grid.GridColor;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
@@ -32,9 +33,11 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         int y = simpleGfxGrid.rowToY(row);
 
         this.rectangle = new Rectangle(x, y, simpleGfxGrid.getCellSize(), simpleGfxGrid.getCellSize());
+        rectangle.setColor(Color.GRAY);
         show();
 
     }
+
 
     /**
      * @see AbstractGridPosition#setColor(GridColor)

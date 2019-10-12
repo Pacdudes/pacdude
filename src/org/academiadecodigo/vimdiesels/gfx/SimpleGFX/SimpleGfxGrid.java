@@ -10,7 +10,7 @@ public class SimpleGfxGrid implements Grid {
 
     private static final int PADDING = 10;
 
-    private int cellSize = 32;
+    private int cellSize = 35;
     private int cols;
     private int rows;
     private Rectangle field;
@@ -69,6 +69,7 @@ public class SimpleGfxGrid implements Grid {
     public void init() {
         this.field = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
         this.field.setColor(Color.BLACK);
+        this.field.fill();
         this.field.draw();
     }
 
