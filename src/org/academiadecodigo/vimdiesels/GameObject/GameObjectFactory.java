@@ -7,17 +7,19 @@ import org.academiadecodigo.vimdiesels.PlayableCharacter.Vitinho;
 
 public class GameObjectFactory {
 
-   /* public static Ghost[] getNewGhost(){
+    public static Ghost[] getNewGhost() {
         Ghost[] ghostArray = new Ghost[GhostType.values().length];
 
-        for (int i = 0; i < GhostType.values().length ; i++) {
+        for (int i = 0; i < GhostType.values().length; i++) {
 
-            ghostArray[i] = new Ghost(GhostType.values()[i]);
+            //ghostArray[i] = new Ghost(GhostType.values()[i] );
 
         }
         return ghostArray;
     }
 
+
+/*
     public static PlayableCharacter getNewPlayableCharacter() {
         // TODO: 06/10/2019 Nao é suposto ser aleatorio
         PlayableCharacterType player = PlayableCharacterType.values()[(int) Math.random() * PlayableCharacterType.values().length];

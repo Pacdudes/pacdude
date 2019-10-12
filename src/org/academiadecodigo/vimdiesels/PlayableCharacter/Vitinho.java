@@ -1,6 +1,8 @@
 package org.academiadecodigo.vimdiesels.PlayableCharacter;
 
 import org.academiadecodigo.vimdiesels.GameObject.PlayableCharacter;
+import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
+import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
 public class Vitinho extends PlayableCharacter {
@@ -10,13 +12,10 @@ public class Vitinho extends PlayableCharacter {
     private int speed;
     private GridPosition pos;
 
-    public Vitinho(String name, int health, int speed, GridPosition pos) {
+    public Vitinho(String name, int health, int speed, SimpleGfxGridPosition pos) {
         super(name, health, speed, pos);
     }
 
-    @Override
-    public void move() {
-    }
 
     @Override
     public boolean isDead() {
