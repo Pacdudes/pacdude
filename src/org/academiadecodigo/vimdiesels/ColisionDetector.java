@@ -18,6 +18,14 @@ public class ColisionDetector {
 
     public boolean isUnSafe(int col, int row) {
 
+        for (GameObject gameObject : objects
+        ) {
+
+            return (gameObject instanceof Ghost && gameObject.getPos().getCol() == col && gameObject.getPos().getRow() == row);
+
+        }
+
+/*
         for (int i = 0; i < objects.size(); i++) {
 
             if (objects.get(i) instanceof PlayableCharacter) {
@@ -29,10 +37,21 @@ public class ColisionDetector {
             }
         }
         return false;
+    }*/
+        return false;
     }
 
     public boolean wallColision(int col, int row) {
 
+
+        for (GameObject gameObejct: objects
+             ) {
+            return (gameObejct.getPos().getCol() == col &&  gameObejct.getPos().getRow() == row);
+        }
+
+        return false;
+
+     /*
         for (int i = 0; i < objects.size(); i++) {
 
             if (objects.get(i) instanceof PlayableCharacter || objects.get(i) instanceof Ghost) {
@@ -44,8 +63,9 @@ public class ColisionDetector {
 
         }
         return false;
-
+*/
     }
 
 
 }
+

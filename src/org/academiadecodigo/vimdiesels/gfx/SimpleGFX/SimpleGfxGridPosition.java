@@ -22,7 +22,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
      * @param row  position row
      * @param grid Simple graphics grid
      */
-    SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid) {
+   public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid) {
 
         super(col, row, grid);
 
@@ -77,5 +77,13 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         this.rectangle.translate(dx, dy);
 
+    }
+
+    public SimpleGfxGrid getSimpleGfxGrid() {
+        return simpleGfxGrid;
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
     }
 }

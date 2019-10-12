@@ -5,6 +5,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.vimdiesels.ColisionDetector;
+import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
 import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
@@ -17,25 +18,26 @@ public abstract class PlayableCharacter extends GameObject implements KeyboardHa
     private boolean dead;
     private int score;
     private Keyboard keyboard;
-    private GridPosition pos;
+    private SimpleGfxGridPosition pos;
     private Grid grid;
     private ColisionDetector colisionDetector;
 
-    public PlayableCharacter(String name, int health, int speed, GridPosition pos) {
+    public PlayableCharacter(String name, int health, int speed, SimpleGfxGridPosition pos) {
         this.name = name;
         this.health = health;
         this.speed = speed;
         this.dead = false;
         this.score = 0;
         this.pos = pos;
-
+        this.keyboard = new Keyboard(this);
+        move();
     }
 
     public void setColisionDetector(ColisionDetector colisionDetector) {
         this.colisionDetector = colisionDetector;
     }
 
-    public void move() throws InterruptedException {
+    public void move() {
 
         KeyboardEvent event_UP = new KeyboardEvent();
         event_UP.setKey(KeyboardEvent.KEY_UP);
@@ -68,40 +70,24 @@ public abstract class PlayableCharacter extends GameObject implements KeyboardHa
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
-                if (!colisionDetector.wallColision(this.pos.getCol(), this.pos.getRow())) {
-                    pos.moveInDirection(GridDirection.UP, speed);
-                    if (!colisionDetector.isUnSafe(this.pos.getCol(), this.pos.getRow())) {
-                        this.die();
-                    }
 
-                }
+                pos.moveInDirection(GridDirection.UP, speed);
 
+                break;
 
             case KeyboardEvent.KEY_DOWN:
 
-                if (!colisionDetector.wallColision(this.pos.getCol(), this.pos.getRow())) {
-                    pos.moveInDirection(GridDirection.DOWN, speed);
-                    if (colisionDetector.isUnSafe(this.pos.getCol(), this.pos.getRow())) {
-                        this.die();
-                    }
-                }
 
+                pos.moveInDirection(GridDirection.DOWN, speed);
+                break;
             case KeyboardEvent.KEY_LEFT:
-                if (!colisionDetector.wallColision(this.pos.getCol(), this.pos.getRow())) {
-                    pos.moveInDirection(GridDirection.LEFT, speed);
-                    if (colisionDetector.isUnSafe(this.pos.getCol(), this.pos.getRow())) {
-                        this.die();
-                    }
-                }
 
+                pos.moveInDirection(GridDirection.LEFT, speed);
+                break;
             case KeyboardEvent.KEY_RIGHT:
-                if (!colisionDetector.wallColision(this.pos.getCol(), this.pos.getRow())) {
-                    pos.moveInDirection(GridDirection.RIGHT, speed);
-                    if (colisionDetector.isUnSafe(this.pos.getCol(), this.pos.getRow())) {
-                        this.die();
-                    }
-                }
 
+                pos.moveInDirection(GridDirection.RIGHT, speed);
+                break;
 
         }
 
@@ -119,5 +105,14 @@ public abstract class PlayableCharacter extends GameObject implements KeyboardHa
 
     public void die() {
         this.dead = true;
+    }
+
+    @Override
+    public SimpleGfxGridPosition getPos() {
+        return pos;
+    }
+
+    public void setPos(SimpleGfxGridPosition pos) {
+        this.pos = pos;
     }
 }

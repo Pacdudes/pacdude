@@ -1,11 +1,8 @@
 package org.academiadecodigo.vimdiesels.grid;
 
-
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
 
-/**
- * A factory of different types of grids
- */
+
 public class GridFactory {
 
     /**
@@ -15,10 +12,10 @@ public class GridFactory {
      * @param rows     the number of rows of the grid
      * @return the new grid
      */
-    public static Grid makeGrid(int cols, int rows) {
-        return new SimpleGfxGrid(cols, rows);
 
-        }
+    public static SimpleGfxGrid makeGrid(int cols, int rows) {
+        return new SimpleGfxGrid(cols, rows);
 
     }
 
+}

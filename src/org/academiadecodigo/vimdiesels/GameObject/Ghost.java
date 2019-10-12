@@ -16,11 +16,43 @@ public class Ghost extends GameObject {
         this.speed = speed;
         this.pos = pos;
     }
+/*
+    public move() {
 
-    public void move() {
+        if (isDead()) {
+            return;
+        }
 
-    }
+        chooseDirection();
+
+        switch (Movement) {
+            case LEFT:
+                if (!collisionDetector.isUnSafe(getPos().getCol() - 1, getPos().getRow())) {
+                    getPos().moveInDirection(GridDirection.LEFT, 1);
+                    break;
+                }
+                break;
+            case RIGHT:
+                if (!collisionDetector.isUnSafe(getPos().getCol() + 1, getPos().getRow())) {
+                    getPos().moveInDirection(GridDirection.RIGHT, 1);
+                    break;
+                }
+                break;
+            case UP:
+                if (!collisionDetector.isUnSafe(getPos().getCol(), getPos().getRow() - 1)) {
+                    getPos().moveInDirection(GridDirection.UP, 1);
+                    break;
+                }
+                break;
+            case DOWN:
+                if (!collisionDetector.isUnSafe(getPos().getCol(), getPos().getRow() + 1)) {
+                    getPos().moveInDirection(GridDirection.DOWN, 1);
+                    break;
+                }
+                break;
+            default:
+        }
 
 
+    }*/
 }
-

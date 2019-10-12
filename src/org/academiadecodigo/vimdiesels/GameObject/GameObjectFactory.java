@@ -12,7 +12,7 @@ public class GameObjectFactory {
 
         for (int i = 0; i < GhostType.values().length; i++) {
 
-            ghostArray[i] = new Ghost(GhostType.values()[i]);
+            //ghostArray[i] = new Ghost(GhostType.values()[i] );
 
         }
         return ghostArray;

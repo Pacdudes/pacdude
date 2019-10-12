@@ -1,10 +1,10 @@
 package org.academiadecodigo.vimdiesels.GameObject;
 
-import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
+import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
 
 public class GameObject {
 
-    private GridPosition pos;
+    private SimpleGfxGridPosition pos;
     public boolean dead;
 
     public boolean isDead() {
@@ -15,7 +15,7 @@ public class GameObject {
         this.pos = pos;
     }
 
-    public GridPosition getPos() {
+    public SimpleGfxGridPosition getPos() {
         return pos;
     }
 
