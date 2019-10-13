@@ -34,6 +34,7 @@ public class Game {
     private int width = cols * cellSize;
     private SimpleGfxGrid grid;
     public static final String resourcesImages = "./gameResources/images";
+    private ArrayList<Picture> pictureArrayList;
     private ColisionDetector colisionDetector;
 
     public Game() {
@@ -100,19 +101,21 @@ public class Game {
                 if (gameObject == 2) {
                     Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
                     recktangle.fill();
+                    pictureArrayList = new ArrayList<>();
+                    pictureArrayList.add(new Picture(x * cellSize + 10,
+                            y * cellSize + 10, "gameResources/images/playableCharacters/andeghostsize.png"));
+                    pictureArrayList.add(new Picture(x * cellSize + 10,
+                            y * cellSize + 10, "gameResources/images/playableCharacters/danonesghostsize.png"));
+                    pictureArrayList.add(new Picture(x * cellSize + 10,
+                            y * cellSize + 10, "gameResources/images/playableCharacters/titighostsize.png"));
+                    pictureArrayList.add(new Picture(x * cellSize + 10,
+                            y * cellSize + 10, "gameResources/images/playableCharacters/vitinhoghostsize.png"));
                     pc = new PlayableCharacter(
                             new SimpleGfxGridPosition(
                                     x,
                                     y,
                                     grid,
-                                    new Picture(
-                                            x * cellSize + 10,
-                                            y * cellSize + 10,
-                                            "gameResources/images/ghosts/faustinoghostsize.png"
-                                    )
-                            )
-                    );
-
+                                    pictureArrayList.get((int) (Math.random()* pictureArrayList.size()))));
                     objectlist.add(pc);
 
                     pc
@@ -180,6 +183,7 @@ public class Game {
     public ArrayList<GameObject> getObjectlist() {
         return objectlist;
     }
+
 
 
 }
