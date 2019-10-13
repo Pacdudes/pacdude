@@ -5,7 +5,7 @@ import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
-public class Wall implements Hitable {
+public class Wall extends GameObject implements Hitable {
 
     private Wall wall;
     private SimpleGfxGridPosition pos;
