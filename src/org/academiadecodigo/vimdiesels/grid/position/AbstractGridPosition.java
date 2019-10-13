@@ -139,4 +139,6 @@ public abstract class AbstractGridPosition implements GridPosition {
                 '}';
     }
 
+
+
 }
