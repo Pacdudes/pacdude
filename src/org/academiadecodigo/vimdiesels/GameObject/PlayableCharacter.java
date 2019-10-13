@@ -1,14 +1,19 @@
 package org.academiadecodigo.vimdiesels.GameObject;
 
+
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.vimdiesels.ColisionDetector;
+import org.academiadecodigo.vimdiesels.Game;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
 import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
+
+import java.util.ArrayList;
 
 public class PlayableCharacter extends GameObject implements KeyboardHandler {
 
@@ -20,7 +25,10 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
     private Keyboard keyboard;
     private SimpleGfxGridPosition pos;
     private Grid grid;
+    private ArrayList<GameObject> gameObjects;
     private ColisionDetector colisionDetector;
+    private Game game;
+    private Picture picture;
 
     public PlayableCharacter(SimpleGfxGridPosition pos) {
         this.name = name;
@@ -33,9 +41,9 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
         move();
     }
 
-    /*public void setColisionDetector(ColisionDetector colisionDetector) {
+    public void setColisionDetector(ColisionDetector colisionDetector) {
         this.colisionDetector = colisionDetector;
-    }*/
+    }
 
     public void move() {
 
@@ -70,22 +78,50 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
+                /*if (colisionDetector.wallColision(pos.getCol(), pos.getRow() - 1)) {
+                    break;
+                }*/
+                pos.moveInDirection(GridDirection.UP, 1);
 
-                pos.moveInDirection(GridDirection.UP, speed);
+                /*if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
+                    this.die();
+                }*/
 
                 break;
 
             case KeyboardEvent.KEY_DOWN:
 
+                /*if (colisionDetector.wallColision(pos.getCol(), pos.getRow() + 1)) {
+                    break;
+                }*/
                 pos.moveInDirection(GridDirection.DOWN, speed);
+
+                /*if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
+                    this.die();
+                }*/
                 break;
+
             case KeyboardEvent.KEY_LEFT:
+                /*if (colisionDetector.wallColision(pos.getCol() - 1, pos.getRow())) {
+                    break;
+                }*/
 
                 pos.moveInDirection(GridDirection.LEFT, speed);
+                /*if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
+                    this.die();
+                }*/
                 break;
+
             case KeyboardEvent.KEY_RIGHT:
+                /*if (colisionDetector.wallColision(pos.getCol() + 1, pos.getRow())) {
+                    break;
+                }*/
 
                 pos.moveInDirection(GridDirection.RIGHT, speed);
+
+                /*if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
+                    this.die();
+                }*/
                 break;
 
         }

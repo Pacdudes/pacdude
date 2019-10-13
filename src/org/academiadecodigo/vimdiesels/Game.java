@@ -1,6 +1,8 @@
 package org.academiadecodigo.vimdiesels;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.vimdiesels.GameObject.*;
 import org.academiadecodigo.vimdiesels.GameObject.Ghosts.Bigotes;
 import org.academiadecodigo.vimdiesels.GameObject.Ghosts.Fernands;
@@ -21,20 +23,24 @@ public class Game {
     private ArrayList<GameObject> objectlist;
     private GridType gridType = GridType.SIMPLE_GFX;
     private PlayableCharacter pc;
+    private Mary mary;
+    private TioFaustino tioFaustino;
+    private Bigotes bigotes;
+    private Fernands fernands;
     private int cols = 21;
     private int rows = 25;
-    private int cellSize = 20;
+    private int cellSize = 35;
     private int height = rows * cellSize;
     private int width = cols * cellSize;
     private SimpleGfxGrid grid;
-
     public static final String resourcesImages = "./gameResources/images";
-
+    private ColisionDetector colisionDetector;
 
     public Game() {
 
         this.grid = new SimpleGfxGrid(cols, rows);
-        this.objectlist = new ArrayList<GameObject>();
+        this.objectlist = new ArrayList<>();
+        //colisionDetector = new ColisionDetector(this);
         //Picture background = new Picture(0,0,backgroundImage);
         //background.draw();
 
@@ -48,15 +54,15 @@ public class Game {
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                {1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-                {1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-                {1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-                {1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-                {1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-                {1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-                {1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-                {1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1},
+                {1, 0, 7, 7, 0, 0, 0, 7, 7, 0, 1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1},
+                {1, 0, 7, 7, 0, 0, 0, 7, 7, 0, 1, 0, 7, 7, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1, 0, 7, 7, 0, 1, 1, 1, 1, 1, 1},
+                {1, 0, 7, 7, 0, 0, 0, 7, 7, 0, 1, 0, 7, 7, 0, 1, 1, 1, 1, 1, 1},
+                {1, 0, 7, 7, 0, 1, 0, 7, 7, 0, 1, 0, 7, 7, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 7, 7, 0, 1, 0, 7, 7, 0, 1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1},
+                {1, 0, 7, 7, 0, 1, 0, 7, 7, 0, 1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1},
                 {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -66,7 +72,7 @@ public class Game {
                 {1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1},
                 {1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1},
                 {1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1},
-                {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         };
         for (int x = 0; x < cols; x++) {
@@ -75,50 +81,105 @@ public class Game {
                 int gameObject = supermap[y][x];
 
                 if (gameObject == 0) {
-                    Coin coin = new Coin(new SimpleGfxGridPosition(x, y, grid));
-                    coin.getPos().getRectangle().setColor(Color.GRAY);
+                    Coin coin = new Coin(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
+                            * cellSize + 10, "gameResources/images/objects/Java Cup.png")));
+                    coin.getPos().getRectangle().setColor(Color.BLACK);
+                    coin.getPos().getPicture().draw();
                     objectlist.add(coin);
                     continue;
                 }
                 if (gameObject == 1) {
-                    Wall wall = new Wall(new SimpleGfxGridPosition(x, y, grid));
+                    Wall wall = new Wall(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
+                            * cellSize + 10, "gameResources/images/objects/Wall.png")));
                     wall.getPos().getRectangle().setColor(Color.PINK);
+                    wall.getPos().getPicture().draw();
+
                     objectlist.add(wall);
                     continue;
                 }
                 if (gameObject == 2) {
-                    pc = new PlayableCharacter(new SimpleGfxGridPosition(x, y, grid));
+                    Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
+                    recktangle.fill();
+                    pc = new PlayableCharacter(
+                            new SimpleGfxGridPosition(
+                                    x,
+                                    y,
+                                    grid,
+                                    new Picture(
+                                            x * cellSize + 10,
+                                            y * cellSize + 10,
+                                            "gameResources/images/ghosts/faustinoghostsize.png"
+                                    )
+                            )
+                    );
+
                     objectlist.add(pc);
+
+                    pc
+                            .getPos()
+                            .getPicture()
+                            .draw();
+
                     continue;
                 }
+
                 if (gameObject == 3) {
-                    Ghost ghost = new TioFaustino(new SimpleGfxGridPosition(x, y, grid));
-                    objectlist.add(ghost);
+
+                    Picture picture = new Picture(x * cellSize + 10, y * cellSize + 10, "gameResources/images/ghosts/faustinoghostsize.png");
+
+                    SimpleGfxGridPosition gp = new SimpleGfxGridPosition(x, y, grid, picture);
+
+                    tioFaustino = new TioFaustino(gp);
+
+                    objectlist.add(tioFaustino);
+
+                    tioFaustino.getPos().getPicture().draw();
+
                     continue;
                 }
+
                 if (gameObject == 4) {
-                    Ghost ghost = new Mary(new SimpleGfxGridPosition(x, y, grid));
-                    objectlist.add(ghost);
+                    mary = new Mary(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
+                            * cellSize + 10, "gameResources/images/ghosts/marighostsize.png")));
+                    objectlist.add(mary);
+                    mary.getPos().getPicture().draw();
                     continue;
                 }
                 if (gameObject == 5) {
-                    Ghost ghost = new Fernands(new SimpleGfxGridPosition(x, y, grid));
-                    objectlist.add(ghost);
+                    fernands = new Fernands(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
+                            * cellSize + 10, "gameResources/images/ghosts/fernadzghostsize.png")));
+                    objectlist.add(fernands);
+                    fernands.getPos().getPicture().draw();
                     continue;
                 }
                 if (gameObject == 6) {
-                    Ghost ghost = new Bigotes(new SimpleGfxGridPosition(x, y, grid));
-                    objectlist.add(ghost);
+                    bigotes = new Bigotes(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
+                            * cellSize + 10, "gameResources/images/ghosts/bigotteghostsize.png")));
+                    objectlist.add(bigotes);
+                    bigotes.getPos().getPicture().draw();
                     continue;
+                }
+
+                if (gameObject == 7) {
+                    Wall wall = new Wall(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
+                            * cellSize + 10, "gameResources/images/objects/RedWall.png")));
+                    wall.getPos().getPicture().draw();
+                    objectlist.add(wall);
+
                 }
             }
         }
     }
 
+
     public void init() {
         gridMaker(grid);
-        pc.move();
-
-
+        pc.setColisionDetector(colisionDetector);
     }
+
+    public ArrayList<GameObject> getObjectlist() {
+        return objectlist;
+    }
+
+
 }

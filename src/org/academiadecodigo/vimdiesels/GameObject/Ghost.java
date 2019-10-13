@@ -8,7 +8,7 @@ import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 public class Ghost extends GameObject {
 
 
-    private GridPosition pos;
+    private SimpleGfxGridPosition pos;
     private GridDirection currentDirection;
     private GhostType GhostType;
 
@@ -17,7 +17,7 @@ public class Ghost extends GameObject {
         currentDirection = GridDirection.values()[(int) (Math.random() * GridDirection.values().length)];
     }
 
-    public void move (){
+    public void move() {
 
     }
 
@@ -40,43 +40,47 @@ public class Ghost extends GameObject {
 
     }
 
-/*
-    public move() {
+    /*
+        public move() {
 
-        if (isDead()) {
-            return;
-        }
+            if (isDead()) {
+                return;
+            }
 
-        chooseDirection();
+            chooseDirection();
 
-        switch (Movement) {
-            case LEFT:
-                if (!collisionDetector.isUnSafe(getPos().getCol() - 1, getPos().getRow())) {
-                    getPos().moveInDirection(GridDirection.LEFT, 1);
+            switch (Movement) {
+                case LEFT:
+                    if (!collisionDetector.isUnSafe(getPos().getCol() - 1, getPos().getRow())) {
+                        getPos().moveInDirection(GridDirection.LEFT, 1);
+                        break;
+                    }
                     break;
-                }
-                break;
-            case RIGHT:
-                if (!collisionDetector.isUnSafe(getPos().getCol() + 1, getPos().getRow())) {
-                    getPos().moveInDirection(GridDirection.RIGHT, 1);
+                case RIGHT:
+                    if (!collisionDetector.isUnSafe(getPos().getCol() + 1, getPos().getRow())) {
+                        getPos().moveInDirection(GridDirection.RIGHT, 1);
+                        break;
+                    }
                     break;
-                }
-                break;
-            case UP:
-                if (!collisionDetector.isUnSafe(getPos().getCol(), getPos().getRow() - 1)) {
-                    getPos().moveInDirection(GridDirection.UP, 1);
+                case UP:
+                    if (!collisionDetector.isUnSafe(getPos().getCol(), getPos().getRow() - 1)) {
+                        getPos().moveInDirection(GridDirection.UP, 1);
+                        break;
+                    }
                     break;
-                }
-                break;
-            case DOWN:
-                if (!collisionDetector.isUnSafe(getPos().getCol(), getPos().getRow() + 1)) {
-                    getPos().moveInDirection(GridDirection.DOWN, 1);
+                case DOWN:
+                    if (!collisionDetector.isUnSafe(getPos().getCol(), getPos().getRow() + 1)) {
+                        getPos().moveInDirection(GridDirection.DOWN, 1);
+                        break;
+                    }
                     break;
-                }
-                break;
-            default:
-        }
+                default:
+            }
 
 
-    }*/
+        }*/
+    @Override
+    public SimpleGfxGridPosition getPos() {
+        return pos;
+    }
 }

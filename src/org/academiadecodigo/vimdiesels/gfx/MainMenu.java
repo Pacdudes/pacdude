@@ -18,7 +18,7 @@ public class MainMenu {
     public void drawMainMenu(){
 
         menuOptions[0] = new Picture(336,700, MenuOptions.START_GAME.getUnselected());
-        menuSelected[0] = new Picture(336,700,)
+        menuSelected[0] = new Picture(336,700,MenuOptions.START_GAME.getSelected());
 
 
 

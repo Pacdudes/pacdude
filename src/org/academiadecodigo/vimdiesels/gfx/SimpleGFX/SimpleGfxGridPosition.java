@@ -1,6 +1,9 @@
 package org.academiadecodigo.vimdiesels.gfx.SimpleGFX;
 
+
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.vimdiesels.grid.GridColor;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
 import org.academiadecodigo.vimdiesels.grid.position.AbstractGridPosition;
@@ -13,6 +16,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     private Rectangle rectangle;
     private SimpleGfxGrid simpleGfxGrid;
+    private Picture picture;
 
 
     /**
@@ -22,7 +26,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
      * @param row  position row
      * @param grid Simple graphics grid
      */
-   public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid) {
+    public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid, Picture picture) {
 
         super(col, row, grid);
 
@@ -30,11 +34,13 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         int x = simpleGfxGrid.columnToX(col);
         int y = simpleGfxGrid.rowToY(row);
-
+        this.picture = picture;
         this.rectangle = new Rectangle(x, y, simpleGfxGrid.getCellSize(), simpleGfxGrid.getCellSize());
+        rectangle.setColor(Color.BLACK);
         show();
 
     }
+
 
     /**
      * @see AbstractGridPosition#setColor(GridColor)
@@ -74,7 +80,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         int dx = simpleGfxGrid.columnToX(getCol()) - simpleGfxGrid.columnToX(initialCol);
         int dy = simpleGfxGrid.rowToY(getRow()) - simpleGfxGrid.rowToY(initialRow);
-
+        this.picture.translate(dx,dy);
         this.rectangle.translate(dx, dy);
 
     }
@@ -85,5 +91,9 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     public Rectangle getRectangle() {
         return rectangle;
+    }
+
+    public Picture getPicture() {
+        return picture;
     }
 }

@@ -2,6 +2,7 @@ package org.academiadecodigo.vimdiesels.gfx.SimpleGFX;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
@@ -10,7 +11,7 @@ public class SimpleGfxGrid implements Grid {
 
     private static final int PADDING = 10;
 
-    private int cellSize = 32;
+    private int cellSize = 35;
     private int cols;
     private int rows;
     private Rectangle field;
@@ -78,7 +79,8 @@ public class SimpleGfxGrid implements Grid {
 
     @Override
     public GridPosition makeGridPosition(int col, int row) {
-        return new SimpleGfxGridPosition(col, row, this);
+        return new SimpleGfxGridPosition(col, row, this,
+                new Picture(col,row,"resources/RedWall.png"));
     }
 
     /**
