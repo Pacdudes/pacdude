@@ -15,11 +15,7 @@ public class GameOver {
     public void drawGameOver(){
 
         gameOverBackground = new Picture(0,0,pathImages + "gameoverBackground2.png");
-
         gameOverBackground.draw();
-
-
-
 
     }
 
