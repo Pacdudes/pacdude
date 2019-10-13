@@ -25,7 +25,7 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
     public PlayableCharacter(SimpleGfxGridPosition pos) {
         this.name = name;
         this.health = health;
-        this.speed = speed;
+        this.speed = 1;
         this.dead = false;
         this.score = 0;
         this.pos = pos;

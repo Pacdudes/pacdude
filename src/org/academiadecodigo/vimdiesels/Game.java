@@ -10,6 +10,7 @@ import org.academiadecodigo.vimdiesels.GameObject.Ghosts.TioFaustino;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
 import org.academiadecodigo.vimdiesels.grid.Grid;
+import org.academiadecodigo.vimdiesels.grid.GridDirection;
 import org.academiadecodigo.vimdiesels.grid.GridFactory;
 import org.academiadecodigo.vimdiesels.grid.GridType;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
@@ -35,6 +36,7 @@ public class Game {
 
     }
 
+
     public void gridMaker(SimpleGfxGrid grid) {
 
         int[][] supermap = {
@@ -43,7 +45,7 @@ public class Game {
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
                 {1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
                 {1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1},
@@ -61,7 +63,7 @@ public class Game {
                 {1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1},
                 {1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1},
                 {1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1},
-                {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         };
         for (int x = 0; x < cols; x++) {
@@ -85,6 +87,7 @@ public class Game {
                 }
                 if (gameObject == 3) {
                     Ghost ghost = new TioFaustino(new SimpleGfxGridPosition(x, y, grid));
+                    //ghost.chooseDirection();
                     continue;
                 }
                 if (gameObject == 4) {
@@ -103,8 +106,9 @@ public class Game {
         }
     }
 
-    public void init() {
+    public void start() {
         gridMaker(grid);
+
 
     }
 }
