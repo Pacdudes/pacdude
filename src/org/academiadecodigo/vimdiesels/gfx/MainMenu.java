@@ -10,6 +10,7 @@ public class MainMenu {
     private String pathImages = Game.resourcesImages + "menu/";
     private Picture [] menuOptions = new Picture[2];
     private Picture [] menuSelected = new Picture[2];
+    private Picture menuBackground;
 
     public MainMenu(){
         drawMainMenu();
@@ -17,9 +18,12 @@ public class MainMenu {
 
     public void drawMainMenu(){
 
-        menuOptions[0] = new Picture(336,700, MenuOptions.START_GAME.getUnselected());
+        menuBackground = new Picture(0,0, pathImages + "mainmenuBackground.png");
+
+       // menuOptions[0] = new Picture(336,700, MenuOptions.START_GAME.getUnselected());
         menuSelected[0] = new Picture(336,700,MenuOptions.START_GAME.getSelected());
 
+        menuOptions[1] = new Picture()
 
 
     }
