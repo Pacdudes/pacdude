@@ -19,7 +19,6 @@ import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 import java.util.ArrayList;
 
 public class Game {
-
     private ArrayList<GameObject> objectlist;
     private GridType gridType = GridType.SIMPLE_GFX;
     private PlayableCharacter pc;
@@ -57,8 +56,8 @@ public class Game {
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1},
-                {1, 0, 7, 7, 0, 0, 0, 7, 7, 0, 1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1},
-                {1, 0, 7, 7, 0, 0, 0, 7, 7, 0, 1, 0, 7, 7, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 7, 7, 8, 8, 8, 7, 7, 0, 1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1},
+                {1, 0, 7, 7, 8, 8, 8, 7, 7, 0, 1, 0, 7, 7, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 7, 7, 7, 7, 7, 7, 7, 0, 1, 0, 7, 7, 0, 1, 1, 1, 1, 1, 1},
                 {1, 0, 7, 7, 0, 0, 0, 7, 7, 0, 1, 0, 7, 7, 0, 1, 1, 1, 1, 1, 1},
                 {1, 0, 7, 7, 0, 1, 0, 7, 7, 0, 1, 0, 7, 7, 0, 0, 0, 0, 0, 0, 1},

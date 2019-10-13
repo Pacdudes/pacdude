@@ -78,11 +78,18 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
-                if (!isDead()) {
+                if (!isDead()|| score < 215) {
                     if (colisionDetector.wallColision(pos.getCol(), pos.getRow() - 1)) {
                         break;
                     }
                     pos.moveInDirection(GridDirection.UP, 1);
+                    if (colisionDetector.coinColision(pos.getCol(),pos.getRow())){
+                        this.score++;
+                        if (score > 215){
+                            this.die();
+                        }
+                        System.out.println(score);
+                    }
 
                     if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
                         this.die();
@@ -92,11 +99,18 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-                if (!isDead()) {
+                if (!isDead() || score < 215) {
                     if (colisionDetector.wallColision(pos.getCol(), pos.getRow() + 1)) {
                         break;
                     }
                     pos.moveInDirection(GridDirection.DOWN, speed);
+                    if (colisionDetector.coinColision(pos.getCol(),pos.getRow())){
+                        this.score++;
+                        if (score > 215){
+                            this.die();
+                        }
+                        System.out.println(score);
+                    }
 
                     if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
                         this.die();
@@ -105,12 +119,20 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_LEFT:
-                if (!isDead()) {
+                if (!isDead()|| score  < 215) {
                     if (colisionDetector.wallColision(pos.getCol() - 1, pos.getRow())) {
                         break;
                     }
 
                     pos.moveInDirection(GridDirection.LEFT, speed);
+                    if (colisionDetector.coinColision(pos.getCol(),pos.getRow())){
+                        this.score++;
+                        if (score > 215){
+                            this.die();
+                        }
+                        System.out.println(score);
+
+                    }
                     if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
                         this.die();
 
@@ -125,6 +147,13 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                     }
 
                     pos.moveInDirection(GridDirection.RIGHT, speed);
+                    if (colisionDetector.coinColision(pos.getCol(),pos.getRow())){
+                        this.score++;
+                        if (score > 215){
+                            this.die();
+                        }
+
+                    }
 
                     if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
                         this.die();

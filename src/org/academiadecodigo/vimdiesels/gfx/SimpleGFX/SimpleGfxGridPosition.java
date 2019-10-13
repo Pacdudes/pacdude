@@ -97,5 +97,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         return picture;
     }
 
-
+    public void setPicture(Picture picture) {
+        this.picture = picture;
+    }
 }

@@ -1,9 +1,6 @@
 package org.academiadecodigo.vimdiesels;
 
-import org.academiadecodigo.vimdiesels.GameObject.GameObject;
-import org.academiadecodigo.vimdiesels.GameObject.Ghost;
-import org.academiadecodigo.vimdiesels.GameObject.PlayableCharacter;
-import org.academiadecodigo.vimdiesels.GameObject.Wall;
+import org.academiadecodigo.vimdiesels.GameObject.*;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
 import java.util.*;
@@ -41,6 +38,27 @@ public class ColisionDetector {
      return verify;
     }
 
+
+    public boolean coinColision(int col, int row) {
+        boolean verify = false;
+        for (int i = 0; i <objects.size() ; i++) {
+            if (objects.get(i).getPos().getCol() == col && objects.get(i).getPos().getRow() == row && objects.get(i) instanceof Coin)
+            {
+                if(objects.get(i).getPos().getPicture()!= null) {
+                    verify = true;
+                    objects.get(i).getPos().getPicture().delete();
+                    objects.get(i).getPos().setPicture(null);
+                    break;
+                }
+            }
+        }
+
+        return verify;
+    }
+
+    public ArrayList<GameObject> getObjects(){
+        return objects;
+    }
 
 }
 
