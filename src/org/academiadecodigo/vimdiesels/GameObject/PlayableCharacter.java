@@ -78,7 +78,7 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
-                if (!isDead()|| score < 215) {
+                if (!isDead()) {
                     if (colisionDetector.wallColision(pos.getCol(), pos.getRow() - 1)) {
                         break;
                     }
@@ -99,7 +99,7 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-                if (!isDead() || score < 215) {
+                if (!isDead()) {
                     if (colisionDetector.wallColision(pos.getCol(), pos.getRow() + 1)) {
                         break;
                     }
@@ -119,7 +119,7 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_LEFT:
-                if (!isDead()|| score  < 215) {
+                if (!isDead()) {
                     if (colisionDetector.wallColision(pos.getCol() - 1, pos.getRow())) {
                         break;
                     }
