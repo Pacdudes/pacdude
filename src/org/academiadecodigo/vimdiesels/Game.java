@@ -28,6 +28,9 @@ public class Game {
     private int width = cols * cellSize;
     private SimpleGfxGrid grid;
 
+    public static final String resourcesImages = "./gameResources/images";
+
+
     public Game() {
 
         this.grid = new SimpleGfxGrid(cols, rows);
