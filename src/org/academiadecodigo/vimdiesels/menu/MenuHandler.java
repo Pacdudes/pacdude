@@ -1,9 +1,11 @@
 package org.academiadecodigo.vimdiesels.menu;
 
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.vimdiesels.Game;
 import org.academiadecodigo.vimdiesels.gfx.MainMenu;
 
-public class MenuHandler {
+public class MenuHandler implements KeyboardHandler {
 
     private MainMenu gfxMainMenu;
     private MenuOptions menuOptions;
@@ -16,14 +18,26 @@ public class MenuHandler {
         this.gfxMainMenu = new MainMenu();
         gfxMainMenu.drawMainMenu();
         this.mainMenu = true;
+
     }
 
-    public void keyUp(){
-        if (!mainMenu){
-            return;
+
+
+
+    @Override
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+
+       /* switch(keyboardEvent.getKey()){
+
+            case KeyboardEvent.KEY_UP:
+                if(MenuOptions.valueOf(
         }
+*/
 
-       // if(menuOptions.)
     }
 
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
+    }
 }
