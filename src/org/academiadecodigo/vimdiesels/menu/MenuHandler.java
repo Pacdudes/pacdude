@@ -27,12 +27,12 @@ public class MenuHandler implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-        switch(keyboardEvent.getKey()){
+       /* switch(keyboardEvent.getKey()){
 
             case KeyboardEvent.KEY_UP:
                 if(MenuOptions.valueOf(
         }
-
+*/
 
     }
 
