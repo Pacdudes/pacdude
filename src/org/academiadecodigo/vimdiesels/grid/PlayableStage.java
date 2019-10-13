@@ -11,7 +11,7 @@ public class PlayableStage implements Grid {
 
     @Override
     public void init() {
-        this.rectangle = new Rectangle()
+        this.rectangle = new Rectangle();
 
     }
 
