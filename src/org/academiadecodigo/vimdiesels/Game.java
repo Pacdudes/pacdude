@@ -168,6 +168,10 @@ public class Game {
                     objectlist.add(wall);
 
                 }
+                if(gameObject ==8){
+                    new SimpleGfxGridPosition(x,y,grid);
+
+                }
             }
         }
     }

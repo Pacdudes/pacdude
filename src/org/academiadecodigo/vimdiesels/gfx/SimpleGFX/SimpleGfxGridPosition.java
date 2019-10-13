@@ -40,6 +40,19 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         show();
 
     }
+    public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid) {
+
+        super(col, row, grid);
+
+        simpleGfxGrid = (SimpleGfxGrid) getGrid();
+
+        int x = simpleGfxGrid.columnToX(col);
+        int y = simpleGfxGrid.rowToY(row);
+        this.rectangle = new Rectangle(x, y, simpleGfxGrid.getCellSize(), simpleGfxGrid.getCellSize());
+        rectangle.setColor(Color.BLACK);
+        show();
+
+    }
 
 
     /**
