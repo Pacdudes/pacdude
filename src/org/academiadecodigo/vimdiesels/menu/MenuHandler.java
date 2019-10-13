@@ -1,39 +1,29 @@
 package org.academiadecodigo.vimdiesels.menu;
 
+import org.academiadecodigo.vimdiesels.Game;
+import org.academiadecodigo.vimdiesels.gfx.MainMenu;
+
 public class MenuHandler {
 
+    private MainMenu gfxMainMenu;
     private MenuOptions menuOptions;
+    private Game game;
+    private boolean mainMenu;
 
-    public void MenuHandler() {
+    public MenuHandler(Game game) {
 
-        /*
-        SoundEffect.stopMusic();
-        launchBG = new Picture(10,10,"backgroundInit.gif");
-        launchBG.draw();
-        currentSelection = CurrentSelection.STARTGAME;
-        arrayOfPictures = new Picture[3][2];
+        this.game = game;
+        this.gfxMainMenu = new MainMenu();
+        gfxMainMenu.drawMainMenu();
+        this.mainMenu = true;
+    }
 
-        for (int row = 0; row < arrayOfPictures.length; row++) {
-
-            for (int column = 0; column < arrayOfPictures[row].length; column++) {
-                String imgsrc = null;
-                if ((column % 2) == 0) {
-                    imgsrc = CurrentSelection.values()[row].getUnselected();
-                } else {
-                    imgsrc = CurrentSelection.values()[row].getSelected();
-                }
-                arrayOfPictures[row][column] = new Picture(
-                        (width / 2 - 173), (height / 2 - 50) + (menuItemHeight * row), imgsrc);
-
-                if ((column % 2) == 0) {
-                    arrayOfPictures[row][column].draw();
-                }
-            }
+    public void keyUp(){
+        if (!mainMenu){
+            return;
         }
 
-        // Force 1st item to be selected
-        arrayOfPictures[0][0].delete();
-        arrayOfPictures[0][1].draw();
-        */
+       // if(menuOptions.)
     }
+
 }
