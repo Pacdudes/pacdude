@@ -41,7 +41,7 @@ public class Game {
 
         this.grid = new SimpleGfxGrid(cols, rows);
         this.objectlist = new ArrayList<>();
-        //colisionDetector = new ColisionDetector(this);
+        colisionDetector = new ColisionDetector(objectlist);
         //Picture background = new Picture(0,0,backgroundImage);
         //background.draw();
 
@@ -116,7 +116,6 @@ public class Game {
                                     y,
                                     grid,
                                     pictureArrayList.get((int) (Math.random()* pictureArrayList.size()))));
-                    objectlist.add(pc);
 
                     pc
                             .getPos()
@@ -177,7 +176,9 @@ public class Game {
 
     public void init() {
         gridMaker(grid);
+        colisionDetector = new ColisionDetector(objectlist);
         pc.setColisionDetector(colisionDetector);
+
     }
 
     public ArrayList<GameObject> getObjectlist() {

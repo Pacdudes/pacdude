@@ -78,50 +78,58 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
-                /*if (colisionDetector.wallColision(pos.getCol(), pos.getRow() - 1)) {
-                    break;
-                }*/
-                pos.moveInDirection(GridDirection.UP, 1);
+                if (!isDead()) {
+                    if (colisionDetector.wallColision(pos.getCol(), pos.getRow() - 1)) {
+                        break;
+                    }
+                    pos.moveInDirection(GridDirection.UP, 1);
 
-                /*if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
-                    this.die();
-                }*/
+                    if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
+                        this.die();
+                    }
+                }
 
                 break;
 
             case KeyboardEvent.KEY_DOWN:
+                if (!isDead()) {
+                    if (colisionDetector.wallColision(pos.getCol(), pos.getRow() + 1)) {
+                        break;
+                    }
+                    pos.moveInDirection(GridDirection.DOWN, speed);
 
-                /*if (colisionDetector.wallColision(pos.getCol(), pos.getRow() + 1)) {
-                    break;
-                }*/
-                pos.moveInDirection(GridDirection.DOWN, speed);
-
-                /*if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
-                    this.die();
-                }*/
+                    if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
+                        this.die();
+                    }
+                }
                 break;
 
             case KeyboardEvent.KEY_LEFT:
-                /*if (colisionDetector.wallColision(pos.getCol() - 1, pos.getRow())) {
-                    break;
-                }*/
+                if (!isDead()) {
+                    if (colisionDetector.wallColision(pos.getCol() - 1, pos.getRow())) {
+                        break;
+                    }
 
-                pos.moveInDirection(GridDirection.LEFT, speed);
-                /*if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
-                    this.die();
-                }*/
+                    pos.moveInDirection(GridDirection.LEFT, speed);
+                    if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
+                        this.die();
+
+                    }
+                }
                 break;
 
             case KeyboardEvent.KEY_RIGHT:
-                /*if (colisionDetector.wallColision(pos.getCol() + 1, pos.getRow())) {
-                    break;
-                }*/
+                if (!isDead()) {
+                    if (colisionDetector.wallColision(pos.getCol() + 1, pos.getRow())) {
+                        break;
+                    }
 
-                pos.moveInDirection(GridDirection.RIGHT, speed);
+                    pos.moveInDirection(GridDirection.RIGHT, speed);
 
-                /*if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
-                    this.die();
-                }*/
+                    if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
+                        this.die();
+                    }
+                }
                 break;
 
         }
