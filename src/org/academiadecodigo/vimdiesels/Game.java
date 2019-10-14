@@ -1,5 +1,6 @@
 package org.academiadecodigo.vimdiesels;
 
+import org.academiadecodigo.bootcamp.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -10,18 +11,13 @@ import org.academiadecodigo.vimdiesels.GameObject.Ghosts.Mary;
 import org.academiadecodigo.vimdiesels.GameObject.Ghosts.TioFaustino;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
-import org.academiadecodigo.vimdiesels.gfx.Win;
-import org.academiadecodigo.vimdiesels.grid.Grid;
-import org.academiadecodigo.vimdiesels.grid.GridFactory;
-import org.academiadecodigo.vimdiesels.grid.GridType;
-import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
+
 
 import java.util.ArrayList;
 
 public class Game {
 
     private ArrayList<GameObject> objectlist;
-    private GridType gridType = GridType.SIMPLE_GFX;
     private PlayableCharacter pc;
     private Mary mary;
     private TioFaustino tioFaustino;
@@ -30,13 +26,13 @@ public class Game {
     private int cols = 21;
     private int rows = 25;
     private int cellSize = 35;
-    private int height = rows * cellSize;
-    private int width = cols * cellSize;
     private SimpleGfxGrid grid;
     public static final String resourcesImages = "./gameResources/images";
     private ArrayList<Picture> pictureArrayList;
     private ArrayList<Ghost> ghostArrayList;
     private ColisionDetector colisionDetector;
+
+
 
     public Game() {
 
@@ -44,8 +40,6 @@ public class Game {
         this.objectlist = new ArrayList<>();
         this.ghostArrayList = new ArrayList<>();
         colisionDetector = new ColisionDetector(objectlist);
-        //Picture background = new Picture(0,0,backgroundImage);
-        //background.draw();
 
     }
 
@@ -88,6 +82,9 @@ public class Game {
                 {1, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 5, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         };
+
+
+
 
         for (int x = 0; x < cols; x++) {
             for (int y = 0; y < rows; y++) {
@@ -237,6 +234,10 @@ public class Game {
         pc.setColisionDetector(colisionDetector);
         colisionDetector.setPlayableCharacter(pc);
 
+
+        Sound mainSound = new Sound("/gameResources/sounds/stage/stageMusic.wav");
+        mainSound.play(true);
+
         for (Ghost ghost : ghostArrayList
         ) {
             ghost.setColisionDetector(colisionDetector);
@@ -273,6 +274,7 @@ public class Game {
                 // Pause for a while
                 Thread.sleep(300);
                 moveAllGhost();
+
             }
         }
     }
