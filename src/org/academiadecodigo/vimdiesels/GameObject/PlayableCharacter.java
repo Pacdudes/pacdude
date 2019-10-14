@@ -6,12 +6,15 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.vimdiesels.ColisionDetector;
 import org.academiadecodigo.vimdiesels.Game;
+import org.academiadecodigo.vimdiesels.gfx.GameOver;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
 import org.academiadecodigo.vimdiesels.gfx.Win;
 import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
+import org.academiadecodigo.vimdiesels.menu.GameOverHandler;
+
 import java.util.ArrayList;
 
 public class PlayableCharacter extends GameObject implements KeyboardHandler {
@@ -26,6 +29,8 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
     private Grid grid;
     private ArrayList<GameObject> gameObjects;
     private ColisionDetector colisionDetector;
+    private GameOverHandler gameOver;
+    private GameOverHandler gameWin;
     private Game game;
     private Picture picture;
 
@@ -100,6 +105,7 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                         this.score++;
                         if (score > 215){
                             this.die();
+
                         }
                         System.out.println(score);
                     }
@@ -162,6 +168,14 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
     @Override
     public SimpleGfxGridPosition getPos() {
         return pos;
+    }
+
+    public void setGameOver(GameOverHandler gameOver) {
+        this.gameOver = gameOver;
+    }
+
+    public void setGameWin(GameOverHandler gameWin) {
+        this.gameWin = gameWin;
     }
 
     public void setPos(SimpleGfxGridPosition pos) {

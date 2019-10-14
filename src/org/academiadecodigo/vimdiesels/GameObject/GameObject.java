@@ -19,4 +19,7 @@ public class GameObject {
         return pos;
     }
 
+    public void setPos(SimpleGfxGridPosition pos) {
+        this.pos = pos;
+    }
 }

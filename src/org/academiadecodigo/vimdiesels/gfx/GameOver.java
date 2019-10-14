@@ -8,7 +8,7 @@ public class GameOver {
     private String pathImages = Game.resourcesImages +"menu/";
     private Picture gameOverBackground;
 
-    public GameOver(){
+    public GameOver(Game game){
         drawGameOver();
     }
 
