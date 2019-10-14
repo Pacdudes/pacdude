@@ -271,7 +271,7 @@ public class Game {
         while (true) {
             if (!getPlayabaleCharachter().isDead()) {
                 // Pause for a while
-                Thread.sleep(200);
+                Thread.sleep(300);
                 moveAllGhost();
             }
         }
