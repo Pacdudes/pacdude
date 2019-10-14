@@ -49,10 +49,20 @@ public class Game {
     }
 
     public void gridMaker(SimpleGfxGrid grid) {
+        int maryx =0;
+        int maryy=0;
+        int fernadsx=0;
+        int fernadsy=0;
+        int bigotesx=0;
+        int bigotesy=0;
+        int faustinox=0;
+        int faustinoy=0;
+        int playerx=0;
+        int playery =0;
 
         int[][] supermap = {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 6, 1},
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
                 {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
@@ -70,11 +80,11 @@ public class Game {
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1},
                 {1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1},
-                {1, 0, 0, 0, 0, 1, 0, 1, 3, 4, 1, 5, 6, 1, 0, 1, 0, 0, 0, 0, 1},
+                {1, 0, 0, 0, 0, 1, 0, 1, 2, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1},
                 {1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1},
                 {1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1},
                 {1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1},
-                {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 1},
+                {1, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 5, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         };
         for (int x = 0; x < cols; x++) {
@@ -102,42 +112,18 @@ public class Game {
                 if (gameObject == 2) {
                     Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
                     recktangle.fill();
-                    pictureArrayList = new ArrayList<>();
-                    pictureArrayList.add(new Picture(x * cellSize + 10,
-                            y * cellSize + 10, "gameResources/images/playableCharacters/andeghostsize.png"));
-                    pictureArrayList.add(new Picture(x * cellSize + 10,
-                            y * cellSize + 10, "gameResources/images/playableCharacters/danonesghostsize.png"));
-                    pictureArrayList.add(new Picture(x * cellSize + 10,
-                            y * cellSize + 10, "gameResources/images/playableCharacters/titighostsize.png"));
-                    pictureArrayList.add(new Picture(x * cellSize + 10,
-                            y * cellSize + 10, "gameResources/images/playableCharacters/vitinhoghostsize.png"));
-                    pc = new PlayableCharacter(
-                            new SimpleGfxGridPosition(
-                                    x,
-                                    y,
-                                    grid,
-                                    pictureArrayList.get((int) (Math.random()* pictureArrayList.size()))));
-
-                    pc
-                            .getPos()
-                            .getPicture()
-                            .draw();
+                    playerx =x;
+                    playery=y;
 
                     continue;
                 }
 
                 if (gameObject == 3) {
 
-                    Picture picture = new Picture(x * cellSize + 10, y * cellSize + 10, "gameResources/images/ghosts/faustinoghostsize.png");
+                    faustinox = x;
+                    faustinoy =y;
                     Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
                     recktangle.fill();
-                    SimpleGfxGridPosition gp = new SimpleGfxGridPosition(x, y, grid, picture);
-
-                    tioFaustino = new TioFaustino(gp,GhostType.TIO_FAUSTINO);
-
-                    objectlist.add(tioFaustino);
-                    ghostArrayList.add(tioFaustino);
-                    tioFaustino.getPos().getPicture().draw();
 
                     continue;
                 }
@@ -145,31 +131,23 @@ public class Game {
                 if (gameObject == 4) {
                     Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
                     recktangle.fill();
-                    mary = new Mary(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
-                            * cellSize + 10, "gameResources/images/ghosts/marighostsize.png")),GhostType.MARY);
-                    objectlist.add(mary);
-                    ghostArrayList.add(mary);
-                    mary.getPos().getPicture().draw();
+                    maryx = x;
+                    maryy = y;
                     continue;
                 }
                 if (gameObject == 5) {
                     Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
                     recktangle.fill();
-                    fernands = new Fernands(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
-                            * cellSize + 10, "gameResources/images/ghosts/fernadzghostsize.png")),GhostType.FERNANDS);
-                    objectlist.add(fernands);
-                    ghostArrayList.add(fernands);
-                    fernands.getPos().getPicture().draw();
+                    fernadsx = x;
+                    fernadsy = y;
+
                     continue;
                 }
                 if (gameObject == 6) {
                     Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
                     recktangle.fill();
-                    bigotes = new Bigotes(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
-                            * cellSize + 10, "gameResources/images/ghosts/bigotteghostsize.png")),GhostType.BIGOTES);
-                    objectlist.add(bigotes);
-                    ghostArrayList.add(bigotes);
-                    bigotes.getPos().getPicture().draw();
+                    bigotesx = x;
+                    bigotesy = y;
                     continue;
                 }
 
@@ -186,6 +164,55 @@ public class Game {
                 }
             }
         }
+        bigotes = new Bigotes(new SimpleGfxGridPosition(bigotesx, bigotesy, grid, new Picture(bigotesx * cellSize + 10, bigotesy
+                * cellSize + 10, "gameResources/images/ghosts/bigotteghostsize.png")),GhostType.BIGOTES);
+        bigotes.getPos().getPicture().draw();
+
+        fernands = new Fernands(new SimpleGfxGridPosition(fernadsx, fernadsy, grid, new Picture(fernadsx * cellSize + 10, fernadsy
+                * cellSize + 10, "gameResources/images/ghosts/fernadzghostsize.png")),GhostType.FERNANDS);
+
+        fernands.getPos().getPicture().draw();
+
+        mary = new Mary(new SimpleGfxGridPosition(maryx, maryy, grid, new Picture(maryx * cellSize + 10, maryy
+                * cellSize + 10, "gameResources/images/ghosts/marighostsize.png")),GhostType.MARY);
+
+        mary.getPos().getPicture().draw();
+
+        Picture picture = new Picture(faustinox * cellSize + 10, faustinoy * cellSize + 10, "gameResources/images/ghosts/faustinoghostsize.png");
+        SimpleGfxGridPosition gp = new SimpleGfxGridPosition(faustinox, faustinoy, grid, picture);
+        tioFaustino = new TioFaustino(gp,GhostType.TIO_FAUSTINO);
+        tioFaustino.getPos().getPicture().draw();
+
+        pictureArrayList = new ArrayList<>();
+        pictureArrayList.add(new Picture(playerx * cellSize + 10,
+                playery * cellSize + 10, "gameResources/images/playableCharacters/andeghostsize.png"));
+        pictureArrayList.add(new Picture(playerx * cellSize + 10,
+                playery * cellSize + 10, "gameResources/images/playableCharacters/danonesghostsize.png"));
+        pictureArrayList.add(new Picture(playerx * cellSize + 10,
+                playery * cellSize + 10, "gameResources/images/playableCharacters/titighostsize.png"));
+        pictureArrayList.add(new Picture(playerx * cellSize + 10,
+                playery * cellSize + 10, "gameResources/images/playableCharacters/vitinhoghostsize.png"));
+        pc = new PlayableCharacter(
+                new SimpleGfxGridPosition(
+                        playerx,
+                        playery,
+                        grid,
+                        pictureArrayList.get((int) (Math.random()* pictureArrayList.size()))));
+
+        pc
+                .getPos()
+                .getPicture()
+                .draw();
+
+
+        objectlist.add(bigotes);
+        ghostArrayList.add(bigotes);
+        objectlist.add(fernands);
+        ghostArrayList.add(fernands);
+        objectlist.add(tioFaustino);
+        ghostArrayList.add(tioFaustino);
+        objectlist.add(mary);
+        ghostArrayList.add(mary);
     }
 
 
@@ -226,7 +253,7 @@ public class Game {
         while (true) {
 
             // Pause for a while
-            Thread.sleep(300);
+            Thread.sleep(50);
 
             moveAllGhost();
 

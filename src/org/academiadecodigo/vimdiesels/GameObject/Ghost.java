@@ -15,6 +15,7 @@ public class Ghost extends GameObject {
     private ColisionDetector colisionDetector;
     private GhostType GhostType;
     private boolean move;
+    private static final int distance = 1;
 
     public Ghost(SimpleGfxGridPosition pos, GhostType ghostType) {
         this.pos = pos;
@@ -88,35 +89,35 @@ public class Ghost extends GameObject {
 
         switch (direction) {
             case UP:
-                if (colisionDetector.wallColision(this.getPos().getCol(), this.getPos().getRow() - 1)) {
+                if (colisionDetector.wallColision(this.getPos().getCol(), this.getPos().getRow() - distance)) {
                     this.currentDirection = chooseDirection();
                     break;
                 }
-                this.pos.moveInDirection(this.currentDirection, 1);
+                this.pos.moveInDirection(this.currentDirection, distance);
                 break;
 
             case DOWN:
-                if (colisionDetector.wallColision(this.getPos().getCol(), this.getPos().getRow() + 1)) {
+                if (colisionDetector.wallColision(this.getPos().getCol(), this.getPos().getRow() + distance)) {
                     this.currentDirection = chooseDirection();
                     break;
                 }
-                this.pos.moveInDirection(this.currentDirection, 1);
+                this.pos.moveInDirection(this.currentDirection, distance);
                 break;
 
 
             case LEFT:
-                if (colisionDetector.wallColision(this.getPos().getCol() - 1, this.getPos().getRow())) {
+                if (colisionDetector.wallColision(this.getPos().getCol() - distance, this.getPos().getRow())) {
                     this.currentDirection = chooseDirection();
                     break;
                 }
-                this.pos.moveInDirection(this.currentDirection, 1);
+                this.pos.moveInDirection(this.currentDirection, distance);
                 break;
             case RIGHT:
-                if (colisionDetector.wallColision(this.getPos().getCol() + 1, this.getPos().getRow())) {
+                if (colisionDetector.wallColision(this.getPos().getCol() + distance, this.getPos().getRow())) {
                     this.currentDirection = chooseDirection();
                     break;
                 }
-                this.pos.moveInDirection(this.currentDirection, 1);
+                this.pos.moveInDirection(this.currentDirection, distance);
                 break;
         }
 
