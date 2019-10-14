@@ -1,10 +1,15 @@
 package org.academiadecodigo.vimdiesels;
+import org.academiadecodigo.bootcamp.Sound;
 import org.academiadecodigo.vimdiesels.GameObject.*;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 import java.util.*;
 public class ColisionDetector {
+
     private ArrayList<GameObject> objects;
     private PlayableCharacter playableCharacter;
+    private Sound coinEaten;
+
+
     public ColisionDetector(ArrayList<GameObject> objects) {
         this.objects = objects;
     }
@@ -36,6 +41,8 @@ public class ColisionDetector {
                     verify = true;
                     objects.get(i).getPos().getPicture().delete();
                     objects.get(i).getPos().setPicture(null);
+                    coinEaten = new Sound("/gameResources/sounds/stage/eatingCoins.wav");
+                    coinEaten.play(true);
                     break;
                 }
             }

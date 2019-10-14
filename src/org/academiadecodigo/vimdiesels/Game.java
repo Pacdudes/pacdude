@@ -230,13 +230,15 @@ public class Game {
     public void init() {
 
         gridMaker(grid);
+
+        Sound mainSound = new Sound("/gameResources/sounds/mainMenu/mainMenu.wav");
+        mainSound.play(true);
+        mainSound.setLoop(100);
+
         colisionDetector = new ColisionDetector(objectlist);
         pc.setColisionDetector(colisionDetector);
         colisionDetector.setPlayableCharacter(pc);
 
-
-        Sound mainSound = new Sound("/gameResources/sounds/stage/stageMusic.wav");
-        mainSound.play(true);
 
         for (Ghost ghost : ghostArrayList
         ) {
@@ -274,6 +276,7 @@ public class Game {
                 // Pause for a while
                 Thread.sleep(300);
                 moveAllGhost();
+
 
             }
         }
