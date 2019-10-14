@@ -25,6 +25,7 @@ public class SimpleGfxGrid implements Grid {
     public SimpleGfxGrid(int cols, int rows) {
         this.cols = cols;
         this.rows = rows;
+        init();
     }
 
     public int getCellSize() {
