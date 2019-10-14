@@ -34,12 +34,14 @@ public class Game {
     private SimpleGfxGrid grid;
     public static final String resourcesImages = "./gameResources/images";
     private ArrayList<Picture> pictureArrayList;
+    private ArrayList<Ghost> ghostArrayList;
     private ColisionDetector colisionDetector;
 
     public Game() {
 
         this.grid = new SimpleGfxGrid(cols, rows);
         this.objectlist = new ArrayList<>();
+        this.ghostArrayList = new ArrayList<>();
         colisionDetector = new ColisionDetector(objectlist);
         //Picture background = new Picture(0,0,backgroundImage);
         //background.draw();
@@ -127,36 +129,46 @@ public class Game {
                 if (gameObject == 3) {
 
                     Picture picture = new Picture(x * cellSize + 10, y * cellSize + 10, "gameResources/images/ghosts/faustinoghostsize.png");
-
+                    Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
+                    recktangle.fill();
                     SimpleGfxGridPosition gp = new SimpleGfxGridPosition(x, y, grid, picture);
 
-                    tioFaustino = new TioFaustino(gp);
+                    tioFaustino = new TioFaustino(gp,GhostType.TIO_FAUSTINO);
 
                     objectlist.add(tioFaustino);
-
+                    ghostArrayList.add(tioFaustino);
                     tioFaustino.getPos().getPicture().draw();
 
                     continue;
                 }
 
                 if (gameObject == 4) {
+                    Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
+                    recktangle.fill();
                     mary = new Mary(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
-                            * cellSize + 10, "gameResources/images/ghosts/marighostsize.png")));
+                            * cellSize + 10, "gameResources/images/ghosts/marighostsize.png")),GhostType.MARY);
                     objectlist.add(mary);
+                    ghostArrayList.add(mary);
                     mary.getPos().getPicture().draw();
                     continue;
                 }
                 if (gameObject == 5) {
+                    Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
+                    recktangle.fill();
                     fernands = new Fernands(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
-                            * cellSize + 10, "gameResources/images/ghosts/fernadzghostsize.png")));
+                            * cellSize + 10, "gameResources/images/ghosts/fernadzghostsize.png")),GhostType.FERNANDS);
                     objectlist.add(fernands);
+                    ghostArrayList.add(fernands);
                     fernands.getPos().getPicture().draw();
                     continue;
                 }
                 if (gameObject == 6) {
+                    Rectangle recktangle = new Rectangle(x*cellSize+10,y*cellSize + 10,cellSize,cellSize);
+                    recktangle.fill();
                     bigotes = new Bigotes(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
-                            * cellSize + 10, "gameResources/images/ghosts/bigotteghostsize.png")));
+                            * cellSize + 10, "gameResources/images/ghosts/bigotteghostsize.png")),GhostType.BIGOTES);
                     objectlist.add(bigotes);
+                    ghostArrayList.add(bigotes);
                     bigotes.getPos().getPicture().draw();
                     continue;
                 }
@@ -181,6 +193,16 @@ public class Game {
         gridMaker(grid);
         colisionDetector = new ColisionDetector(objectlist);
         pc.setColisionDetector(colisionDetector);
+        for (Ghost ghost: ghostArrayList
+             ) {
+            ghost.setColisionDetector(colisionDetector);
+        }
+        try {
+            start();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -188,6 +210,29 @@ public class Game {
         return objectlist;
     }
 
+    public ArrayList<Ghost> getGhostArrayList() {
+        return ghostArrayList;
+    }
 
+    public void moveAllGhost(){
+        for (Ghost ghost: ghostArrayList
+        ) {
+            ghost.move();
+        }
+        }
+
+    void start() throws InterruptedException {
+
+        while (true) {
+
+            // Pause for a while
+            Thread.sleep(300);
+
+            moveAllGhost();
+
+        }
+
+    }
 
 }
+

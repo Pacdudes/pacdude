@@ -1,5 +1,6 @@
 package org.academiadecodigo.vimdiesels.GameObject;
 
+import org.academiadecodigo.vimdiesels.ColisionDetector;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
 import org.academiadecodigo.vimdiesels.grid.Grid;
@@ -11,16 +12,17 @@ public class Ghost extends GameObject {
 
     private SimpleGfxGridPosition pos;
     private GridDirection currentDirection;
+    private ColisionDetector colisionDetector;
     private GhostType GhostType;
+    private boolean move;
 
-    public Ghost(SimpleGfxGridPosition pos) {
+    public Ghost(SimpleGfxGridPosition pos, GhostType ghostType) {
         this.pos = pos;
+        this.move = true;
+        this.GhostType = ghostType;
         currentDirection = GridDirection.values()[(int) (Math.random() * GridDirection.values().length)];
     }
 
-    public void move() {
-
-    }
 
     public GridDirection chooseDirection() {
 
@@ -80,8 +82,54 @@ public class Ghost extends GameObject {
 
 
         }*/
+    public void move() {
+
+        GridDirection direction = this.currentDirection;
+
+        switch (direction) {
+            case UP:
+                if (colisionDetector.wallColision(this.getPos().getCol(), this.getPos().getRow() - 1)) {
+                    this.currentDirection = chooseDirection();
+                    break;
+                }
+                this.pos.moveInDirection(this.currentDirection, 1);
+                break;
+
+            case DOWN:
+                if (colisionDetector.wallColision(this.getPos().getCol(), this.getPos().getRow() + 1)) {
+                    this.currentDirection = chooseDirection();
+                    break;
+                }
+                this.pos.moveInDirection(this.currentDirection, 1);
+                break;
+
+
+            case LEFT:
+                if (colisionDetector.wallColision(this.getPos().getCol() - 1, this.getPos().getRow())) {
+                    this.currentDirection = chooseDirection();
+                    break;
+                }
+                this.pos.moveInDirection(this.currentDirection, 1);
+                break;
+            case RIGHT:
+                if (colisionDetector.wallColision(this.getPos().getCol() + 1, this.getPos().getRow())) {
+                    this.currentDirection = chooseDirection();
+                    break;
+                }
+                this.pos.moveInDirection(this.currentDirection, 1);
+                break;
+        }
+
+
+    }
+
+
     @Override
     public SimpleGfxGridPosition getPos() {
         return pos;
+    }
+
+    public void setColisionDetector(ColisionDetector colisionDetector) {
+        this.colisionDetector = colisionDetector;
     }
 }
