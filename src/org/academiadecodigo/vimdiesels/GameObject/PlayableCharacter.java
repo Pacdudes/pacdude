@@ -28,6 +28,7 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
     private ColisionDetector colisionDetector;
     private Game game;
     private Picture picture;
+
     public PlayableCharacter(SimpleGfxGridPosition pos) {
 
         this.name = name;
@@ -144,6 +145,7 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                 break;
         }
     }
+
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {

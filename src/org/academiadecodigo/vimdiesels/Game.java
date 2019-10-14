@@ -95,9 +95,10 @@ public class Game {
                 int gameObject = supermap[y][x];
 
                 if (gameObject == 0) {
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     Coin coin = new Coin(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
                             * cellSize + 10, "gameResources/images/objects/Java Cup.png")));
-                    coin.getPos().getRectangle().setColor(Color.BLACK);
                     coin.getPos().getPicture().draw();
                     objectlist.add(coin);
                     continue;
@@ -107,16 +108,14 @@ public class Game {
 
                     Wall wall = new Wall(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
                             * cellSize + 10, "gameResources/images/objects/Wall.png")));
-                    wall.getPos().getRectangle().setColor(Color.PINK);
                     wall.getPos().getPicture().draw();
                     objectlist.add(wall);
                     continue;
 
                 }
                 if (gameObject == 2) {
-
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     playerx = x;
                     playery = y;
                     continue;
@@ -125,36 +124,38 @@ public class Game {
                 if (gameObject == 3) {
                     faustinox = x;
                     faustinoy = y;
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     continue;
 
                 }
                 if (gameObject == 4) {
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     maryx = x;
                     maryy = y;
                     continue;
 
                 }
                 if (gameObject == 5) {
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     fernadsx = x;
                     fernadsy = y;
                     continue;
 
                 }
                 if (gameObject == 6) {
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     bigotesx = x;
                     bigotesy = y;
                     continue;
 
                 }
                 if (gameObject == 7) {
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     Wall wall = new Wall(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
                             * cellSize + 10, "gameResources/images/objects/RedWall.png")));
                     wall.getPos().getPicture().draw();
@@ -261,8 +262,7 @@ public class Game {
     }
 
     public void moveAllGhost() {
-        for (Ghost ghost : ghostArrayList
-        ) {
+        for (Ghost ghost : ghostArrayList) {
             ghost.move();
         }
     }
@@ -271,7 +271,7 @@ public class Game {
         while (true) {
             if (!getPlayabaleCharachter().isDead()) {
                 // Pause for a while
-                Thread.sleep(200);
+                Thread.sleep(100);
                 moveAllGhost();
             }
         }
