@@ -272,7 +272,11 @@ public class Game {
         while (true) {
             if (!getPlayabaleCharachter().isDead()) {
                 // Pause for a while
+<<<<<<< HEAD
                 Thread.sleep(100);
+=======
+                Thread.sleep(300);
+>>>>>>> develop
                 moveAllGhost();
             }
         }
