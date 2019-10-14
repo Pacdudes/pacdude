@@ -154,8 +154,7 @@ public class Game {
 
                 }
                 if (gameObject == 7) {
-                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
-                    rectangle.fill();
+
                     Wall wall = new Wall(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
                             * cellSize + 10, "gameResources/images/objects/RedWall.png")));
                     wall.getPos().getPicture().draw();
@@ -163,6 +162,8 @@ public class Game {
 
                 }
                 if (gameObject == 8) {
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     new SimpleGfxGridPosition(x, y, grid);
 
                 }
