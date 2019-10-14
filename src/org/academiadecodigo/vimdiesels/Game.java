@@ -11,13 +11,18 @@ import org.academiadecodigo.vimdiesels.GameObject.Ghosts.Mary;
 import org.academiadecodigo.vimdiesels.GameObject.Ghosts.TioFaustino;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
-
+import org.academiadecodigo.vimdiesels.gfx.Win;
+import org.academiadecodigo.vimdiesels.grid.Grid;
+import org.academiadecodigo.vimdiesels.grid.GridFactory;
+import org.academiadecodigo.vimdiesels.grid.GridType;
+import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
 import java.util.ArrayList;
 
 public class Game {
 
     private ArrayList<GameObject> objectlist;
+    private GridType gridType = GridType.SIMPLE_GFX;
     private PlayableCharacter pc;
     private Mary mary;
     private TioFaustino tioFaustino;
@@ -26,13 +31,13 @@ public class Game {
     private int cols = 21;
     private int rows = 25;
     private int cellSize = 35;
+    private int height = rows * cellSize;
+    private int width = cols * cellSize;
     private SimpleGfxGrid grid;
     public static final String resourcesImages = "./gameResources/images";
     private ArrayList<Picture> pictureArrayList;
     private ArrayList<Ghost> ghostArrayList;
     private ColisionDetector colisionDetector;
-
-
 
     public Game() {
 
@@ -40,6 +45,8 @@ public class Game {
         this.objectlist = new ArrayList<>();
         this.ghostArrayList = new ArrayList<>();
         colisionDetector = new ColisionDetector(objectlist);
+        //Picture background = new Picture(0,0,backgroundImage);
+        //background.draw();
 
     }
 
@@ -83,18 +90,16 @@ public class Game {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         };
 
-
-
-
         for (int x = 0; x < cols; x++) {
             for (int y = 0; y < rows; y++) {
 
                 int gameObject = supermap[y][x];
 
                 if (gameObject == 0) {
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     Coin coin = new Coin(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
                             * cellSize + 10, "gameResources/images/objects/Java Cup.png")));
-                    coin.getPos().getRectangle().setColor(Color.BLACK);
                     coin.getPos().getPicture().draw();
                     objectlist.add(coin);
                     continue;
@@ -104,16 +109,14 @@ public class Game {
 
                     Wall wall = new Wall(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
                             * cellSize + 10, "gameResources/images/objects/Wall.png")));
-                    wall.getPos().getRectangle().setColor(Color.PINK);
                     wall.getPos().getPicture().draw();
                     objectlist.add(wall);
                     continue;
 
                 }
                 if (gameObject == 2) {
-
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     playerx = x;
                     playery = y;
                     continue;
@@ -122,36 +125,37 @@ public class Game {
                 if (gameObject == 3) {
                     faustinox = x;
                     faustinoy = y;
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     continue;
 
                 }
                 if (gameObject == 4) {
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     maryx = x;
                     maryy = y;
                     continue;
 
                 }
                 if (gameObject == 5) {
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     fernadsx = x;
                     fernadsy = y;
                     continue;
 
                 }
                 if (gameObject == 6) {
-                    Rectangle recktangle = new Rectangle(x * cellSize + 10, y * cellSize + 10, cellSize, cellSize);
-                    recktangle.fill();
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     bigotesx = x;
                     bigotesy = y;
                     continue;
 
                 }
                 if (gameObject == 7) {
+
                     Wall wall = new Wall(new SimpleGfxGridPosition(x, y, grid, new Picture(x * cellSize + 10, y
                             * cellSize + 10, "gameResources/images/objects/RedWall.png")));
                     wall.getPos().getPicture().draw();
@@ -159,6 +163,8 @@ public class Game {
 
                 }
                 if (gameObject == 8) {
+                    Rectangle rectangle = new Rectangle(x*cellSize+10,y*cellSize +10,cellSize,cellSize);
+                    rectangle.fill();
                     new SimpleGfxGridPosition(x, y, grid);
 
                 }
@@ -230,14 +236,12 @@ public class Game {
     public void init() {
 
         gridMaker(grid);
-
-        Sound mainSound = new Sound("/gameResources/sounds/mainMenu/mainMenu.wav");
-        mainSound.play(true);
-        mainSound.setLoop(100);
-
         colisionDetector = new ColisionDetector(objectlist);
         pc.setColisionDetector(colisionDetector);
         colisionDetector.setPlayableCharacter(pc);
+
+        Sound mainSound = new Sound("/gameResources/sounds/mainMenu/mainMenu.wav");
+        mainSound.play(true);
 
 
         for (Ghost ghost : ghostArrayList
@@ -264,8 +268,7 @@ public class Game {
     }
 
     public void moveAllGhost() {
-        for (Ghost ghost : ghostArrayList
-        ) {
+        for (Ghost ghost : ghostArrayList) {
             ghost.move();
         }
     }
@@ -274,10 +277,8 @@ public class Game {
         while (true) {
             if (!getPlayabaleCharachter().isDead()) {
                 // Pause for a while
-                Thread.sleep(300);
+                Thread.sleep(100);
                 moveAllGhost();
-
-
             }
         }
     }

@@ -1,5 +1,6 @@
 package org.academiadecodigo.vimdiesels.grid.position;
 
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.GridColor;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
@@ -15,6 +16,7 @@ public abstract class AbstractGridPosition implements GridPosition {
     private int row;
     private GridColor color;
     private Grid grid;
+    private Picture picture;
 
     /**
      * Construct a new grid position at a specific column and row
@@ -30,13 +32,13 @@ public abstract class AbstractGridPosition implements GridPosition {
         this.color = GridColor.NO_COLOR;
     }
 
+
     /**
      * @see GridPosition#setColor(GridColor)
      */
     @Override
     public void setColor(GridColor color) {
         this.color = color;
-        show();
     }
 
     public Grid getGrid() {
@@ -75,7 +77,6 @@ public abstract class AbstractGridPosition implements GridPosition {
     public void moveTo(int col, int row) {
         this.col = col;
         this.row = row;
-        show();
     }
 
     /**

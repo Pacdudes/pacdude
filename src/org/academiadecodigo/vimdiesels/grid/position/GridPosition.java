@@ -44,15 +44,6 @@ public interface GridPosition {
      */
     void setColor(GridColor color);
 
-    /**
-     * Displays the position in the grid
-     */
-    void show();
-
-    /**
-     * Hides the position in the grid
-     */
-    void hide();
 
     /**
      * Moves this grid position towards a specified direction
