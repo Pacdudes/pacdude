@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
 
-<project name="My little Pony" default="jarfile">
+<project name="ChopChopBoy" default="jarfile">
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">
-        <property name="project.name" value="MyLittlePony-FriendshipIsMagic" />
+        <property name="project.name" value="ChopChopBoys" />
         <property name="src.dir" value="src" />
-        <property name="main.class" value="org.academiadecodigo.friendshipismagic.Main" />
+        <property name="main.class" value="org.academiadecodigo.vimdiesels.Main" />
         <property name="build.dir" value="build" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="lib.dir" value="lib" />
@@ -36,7 +36,7 @@
                 <attribute name="Class-Path" value="${lib.dir} ${resources.dir}" />
             </manifest>
             <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
-            <fileset dir=".">
+            <fileset dir="lib">
                 <include name="**/${resources.dir}/**"/>
             </fileset>
         </jar>
@@ -48,5 +48,6 @@
     </target>
 
 </project>
+
 
 
