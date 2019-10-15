@@ -10,7 +10,7 @@ public class Bigotes extends Ghost {
     private GridDirection pos;
     private GhostType ghostType;
 
-    public Bigotes(SimpleGfxGridPosition pos, GhostType ghostType){
+    public Bigotes(SimpleGfxGridPosition pos, GhostType ghostType) {
         super(pos, ghostType);
 
     }

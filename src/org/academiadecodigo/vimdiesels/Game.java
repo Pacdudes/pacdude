@@ -1,7 +1,6 @@
 package org.academiadecodigo.vimdiesels;
 
 import org.academiadecodigo.bootcamp.Sound;
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.vimdiesels.GameObject.*;
@@ -9,14 +8,9 @@ import org.academiadecodigo.vimdiesels.GameObject.Ghosts.Bigotes;
 import org.academiadecodigo.vimdiesels.GameObject.Ghosts.Fernands;
 import org.academiadecodigo.vimdiesels.GameObject.Ghosts.Mary;
 import org.academiadecodigo.vimdiesels.GameObject.Ghosts.TioFaustino;
-import org.academiadecodigo.vimdiesels.gfx.GameOver;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
-import org.academiadecodigo.vimdiesels.gfx.Win;
-import org.academiadecodigo.vimdiesels.grid.Grid;
-import org.academiadecodigo.vimdiesels.grid.GridFactory;
 import org.academiadecodigo.vimdiesels.grid.GridType;
-import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 import org.academiadecodigo.vimdiesels.menu.GameOverHandler;
 
 import java.util.ArrayList;
@@ -45,9 +39,6 @@ public class Game {
     private Sound sound;
     //885
     //745
-
-    public static final String resourcesImages = "./gameResources/images";
-
 
     public Game() {
 
@@ -292,15 +283,15 @@ public class Game {
 
     void start() throws InterruptedException {
 
-        while (!getPlayabaleCharachter().isDead()){
-                Thread.sleep(300);
-                moveAllGhost();
-            }
-
-            gameover();
-            this.sound.stop();
-
+        while (!getPlayabaleCharachter().isDead()) {
+            Thread.sleep(100);
+            moveAllGhost();
         }
+
+        gameover();
+        this.sound.stop();
+
+    }
 
 
     public int getCols() {
@@ -315,7 +306,7 @@ public class Game {
         return cellSize;
     }
 
-    public void gridReset(){
+    public void gridReset() {
         grid.init();
 
     }

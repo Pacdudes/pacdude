@@ -5,16 +5,17 @@ import org.academiadecodigo.vimdiesels.Game;
 
 public class GameOver {
 
-    private String pathImages = Game.resourcesImages +"menu/";
+
     private Picture gameOverBackground;
 
     public GameOver(Game game){
         drawGameOver();
     }
 
+
     public void drawGameOver(){
 
-        gameOverBackground = new Picture(0,0,pathImages + "gameoverBackground2.png");
+        gameOverBackground = new Picture(0,0,"gameResources/images/menu/gameoverBackground2.png");
         gameOverBackground.draw();
 
     }

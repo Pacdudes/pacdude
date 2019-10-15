@@ -36,8 +36,6 @@ public class SimpleGfxColorMapper {
             default:
                 System.out.println("something went terribly wrong...");
         }
-
         return sGfxColor;
-
     }
 }

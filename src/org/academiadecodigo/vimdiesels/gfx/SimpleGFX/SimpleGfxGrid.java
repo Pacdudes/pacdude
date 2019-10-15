@@ -16,12 +16,6 @@ public class SimpleGfxGrid implements Grid {
     private int rows;
     private Rectangle field;
 
-    /**
-     * Simple graphics grid constructor with a certain number of rows and columns
-     *
-     * @param cols number of the columns
-     * @param rows number of rows
-     */
     public SimpleGfxGrid(int cols, int rows) {
         this.cols = cols;
         this.rows = rows;
@@ -63,10 +57,6 @@ public class SimpleGfxGrid implements Grid {
         return this.field.getY();
     }
 
-
-    /**
-     * Initializes the field simple graphics rectangle and draws it
-     */
     @Override
     public void init() {
         this.field = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
@@ -74,32 +64,16 @@ public class SimpleGfxGrid implements Grid {
         this.field.draw();
     }
 
-    /**
-     * @see Grid#makeGridPosition(int, int)
-     */
-
     @Override
     public GridPosition makeGridPosition(int col, int row) {
         return new SimpleGfxGridPosition(col, row, this,
                 new Picture(col,row,"resources/RedWall.png"));
     }
 
-    /**
-     * Auxiliary method to compute the y value that corresponds to a specific row
-     *
-     * @param row index
-     * @return y pixel value
-     */
     int rowToY(int row) {
         return PADDING + cellSize * row;
     }
 
-    /**
-     * Auxiliary method to compute the x value that corresponds to a specific column
-     *
-     * @param column index
-     * @return x pixel value
-     */
     int columnToX(int column) {
         return PADDING + cellSize * column;
     }

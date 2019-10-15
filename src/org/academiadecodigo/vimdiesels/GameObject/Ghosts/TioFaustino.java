@@ -11,9 +11,9 @@ public class TioFaustino extends Ghost {
 
     private GridPosition pos;
     private GhostType ghostType;
-    public TioFaustino(SimpleGfxGridPosition pos,GhostType ghostType) {
-      super(pos,ghostType);
 
+    public TioFaustino(SimpleGfxGridPosition pos, GhostType ghostType) {
+        super(pos, ghostType);
     }
 
 }

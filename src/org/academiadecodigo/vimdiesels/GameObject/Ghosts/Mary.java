@@ -11,7 +11,7 @@ public class Mary extends Ghost {
     private GridPosition pos;
     private GhostType ghostType;
 
-    public Mary(SimpleGfxGridPosition pos,GhostType ghostType) {
-        super(pos,ghostType);
+    public Mary(SimpleGfxGridPosition pos, GhostType ghostType) {
+        super(pos, ghostType);
     }
 }

@@ -1,4 +1,5 @@
 package org.academiadecodigo.vimdiesels.GameObject;
+
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -6,13 +7,9 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.vimdiesels.ColisionDetector;
 import org.academiadecodigo.vimdiesels.Game;
-import org.academiadecodigo.vimdiesels.gfx.GameOver;
-import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGrid;
 import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
-import org.academiadecodigo.vimdiesels.gfx.Win;
 import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
-import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 import org.academiadecodigo.vimdiesels.menu.GameOverHandler;
 
 import java.util.ArrayList;
@@ -46,6 +43,7 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
         move();
 
     }
+
     public void setColisionDetector(ColisionDetector colisionDetector) {
         this.colisionDetector = colisionDetector;
 
@@ -83,12 +81,11 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                         break;
                     }
                     pos.moveInDirection(GridDirection.UP, 1);
-                    if (colisionDetector.coinColision(pos.getCol(),pos.getRow())){
+                    if (colisionDetector.coinColision(pos.getCol(), pos.getRow())) {
                         this.score++;
-                        if (score > 215){
+                        if (score > 215) {
                             this.die();
                         }
-                        System.out.println(score);
                     }
                     if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
                         this.die();
@@ -101,13 +98,12 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                         break;
                     }
                     pos.moveInDirection(GridDirection.DOWN, speed);
-                    if (colisionDetector.coinColision(pos.getCol(),pos.getRow())){
+                    if (colisionDetector.coinColision(pos.getCol(), pos.getRow())) {
                         this.score++;
-                        if (score > 215){
+                        if (score > 215) {
                             this.die();
 
                         }
-                        System.out.println(score);
                     }
                     if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
                         this.die();
@@ -120,12 +116,11 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                         break;
                     }
                     pos.moveInDirection(GridDirection.LEFT, speed);
-                    if (colisionDetector.coinColision(pos.getCol(),pos.getRow())){
+                    if (colisionDetector.coinColision(pos.getCol(), pos.getRow())) {
                         this.score++;
-                        if (score > 215){
+                        if (score > 215) {
                             this.die();
                         }
-                        System.out.println(score);
                     }
                     if (colisionDetector.isUnSafe(pos.getCol(), pos.getRow())) {
                         this.die();
@@ -138,9 +133,9 @@ public class PlayableCharacter extends GameObject implements KeyboardHandler {
                         break;
                     }
                     pos.moveInDirection(GridDirection.RIGHT, speed);
-                    if (colisionDetector.coinColision(pos.getCol(),pos.getRow())){
+                    if (colisionDetector.coinColision(pos.getCol(), pos.getRow())) {
                         this.score++;
-                        if (score > 215){
+                        if (score > 215) {
                             this.die();
                         }
                     }

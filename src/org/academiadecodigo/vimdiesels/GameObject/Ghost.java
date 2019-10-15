@@ -6,6 +6,7 @@ import org.academiadecodigo.vimdiesels.gfx.SimpleGFX.SimpleGfxGridPosition;
 import org.academiadecodigo.vimdiesels.grid.Grid;
 import org.academiadecodigo.vimdiesels.grid.GridDirection;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
+
 public class Ghost extends GameObject {
 
     private SimpleGfxGridPosition pos;
@@ -23,6 +24,7 @@ public class Ghost extends GameObject {
         currentDirection = GridDirection.values()[(int) (Math.random() * GridDirection.values().length)];
 
     }
+
     public GridDirection chooseDirection() {
 
         // Let's move in the same direction by default
@@ -40,6 +42,7 @@ public class Ghost extends GameObject {
         }
         return newDirection;
     }
+
     public void move() {
 
         GridDirection direction = this.currentDirection;
@@ -51,7 +54,7 @@ public class Ghost extends GameObject {
                     break;
                 }
                 this.pos.moveInDirection(this.currentDirection, distance);
-                if (colisionDetector.playerCollision(this.getPos().getCol(),this.getPos().getRow())){
+                if (colisionDetector.playerCollision(this.getPos().getCol(), this.getPos().getRow())) {
                     break;
                 }
                 break;
@@ -62,7 +65,7 @@ public class Ghost extends GameObject {
                     break;
                 }
                 this.pos.moveInDirection(this.currentDirection, distance);
-                if (colisionDetector.playerCollision(this.getPos().getCol(),this.getPos().getRow())){
+                if (colisionDetector.playerCollision(this.getPos().getCol(), this.getPos().getRow())) {
                     break;
                 }
                 break;
@@ -73,7 +76,7 @@ public class Ghost extends GameObject {
                     break;
                 }
                 this.pos.moveInDirection(this.currentDirection, distance);
-                if (colisionDetector.playerCollision(this.getPos().getCol(),this.getPos().getRow())){
+                if (colisionDetector.playerCollision(this.getPos().getCol(), this.getPos().getRow())) {
                     break;
                 }
                 break;
@@ -84,7 +87,7 @@ public class Ghost extends GameObject {
                     break;
                 }
                 this.pos.moveInDirection(this.currentDirection, distance);
-                if (colisionDetector.playerCollision(this.getPos().getCol(),this.getPos().getRow())){
+                if (colisionDetector.playerCollision(this.getPos().getCol(), this.getPos().getRow())) {
                     break;
                 }
                 break;

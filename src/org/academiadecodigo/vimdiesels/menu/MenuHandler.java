@@ -22,22 +22,11 @@ public class MenuHandler implements KeyboardHandler {
     }
 
 
-
-
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-
-       /* switch(keyboardEvent.getKey()){
-
-            case KeyboardEvent.KEY_UP:
-                if(MenuOptions.valueOf(
-        }
-*/
-
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-
     }
 }

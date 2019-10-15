@@ -9,7 +9,6 @@ public enum Movement {
 
     public static Movement opposite(Movement movement) {
 
-
         if (movement == RIGHT)
             return LEFT;
         else if (movement == LEFT)

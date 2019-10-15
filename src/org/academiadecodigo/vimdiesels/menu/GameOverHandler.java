@@ -18,19 +18,18 @@ public class GameOverHandler implements KeyboardHandler {
     private Picture picture;
     private Rectangle rectangle;
 
-
     public GameOverHandler(Game game) {
         this.game = game;
         gameOverSound = new Sound("/gameResources/sounds/stage/gameOver.wav");
         gameOverSound.play(true);
         gameOverSound.setLoop(100);
-        picture = new Picture(0,0,"gameResources/images/menu/GameOverFinal.png");
+        picture = new Picture(0, 0, "gameResources/images/menu/GameOverFinal.png");
         this.keyboard = new Keyboard(this);
         init();
 
     }
 
-    public void init(){
+    public void init() {
         picture.draw();
 
         KeyboardEvent event_space = new KeyboardEvent();
@@ -39,11 +38,9 @@ public class GameOverHandler implements KeyboardHandler {
 
     }
 
-
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
-
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
 
             game.gridReset();
 

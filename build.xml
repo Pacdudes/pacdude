@@ -4,13 +4,13 @@
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">
-        <property name="project.name" value="ChopChopBoys" />
+        <property name="project.name" value="ChopChopBoy" />
         <property name="src.dir" value="src" />
         <property name="main.class" value="org.academiadecodigo.vimdiesels.Main" />
         <property name="build.dir" value="build" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="lib.dir" value="lib" />
-        <property name="resources.dir" value="resources"/>
+        <property name="resources.dir" value="gameResources"/>
         <path id="classpath">
             <fileset dir="${lib.dir}" includes="**/*.jar" />
         </path>
@@ -36,7 +36,7 @@
                 <attribute name="Class-Path" value="${lib.dir} ${resources.dir}" />
             </manifest>
             <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
-            <fileset dir="lib">
+            <fileset dir=".">
                 <include name="**/${resources.dir}/**"/>
             </fileset>
         </jar>

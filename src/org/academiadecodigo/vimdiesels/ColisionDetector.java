@@ -1,8 +1,11 @@
 package org.academiadecodigo.vimdiesels;
+
 import org.academiadecodigo.bootcamp.Sound;
 import org.academiadecodigo.vimdiesels.GameObject.*;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
+
 import java.util.*;
+
 public class ColisionDetector {
 
     private ArrayList<GameObject> objects;
@@ -13,6 +16,7 @@ public class ColisionDetector {
     public ColisionDetector(ArrayList<GameObject> objects) {
         this.objects = objects;
     }
+
     public boolean isUnSafe(int col, int row) {
         boolean verify = false;
         for (int i = 0; i < objects.size(); i++) {
@@ -23,6 +27,7 @@ public class ColisionDetector {
         }
         return verify;
     }
+
     public boolean wallColision(int col, int row) {
         boolean verify = false;
         for (int i = 0; i < objects.size(); i++) {
@@ -33,6 +38,7 @@ public class ColisionDetector {
         }
         return verify;
     }
+
     public boolean coinColision(int col, int row) {
         boolean verify = false;
         for (int i = 0; i < objects.size(); i++) {
@@ -49,6 +55,7 @@ public class ColisionDetector {
         }
         return verify;
     }
+
     public boolean playerCollision(int col, int row) {
         boolean verify = false;
         if (playableCharacter.getPos().getCol() == col && playableCharacter.getPos().getRow() == row) {
@@ -57,12 +64,15 @@ public class ColisionDetector {
         }
         return verify;
     }
+
     public ArrayList<GameObject> getObjects() {
         return objects;
     }
+
     public PlayableCharacter getPlayableCharacther() {
         return playableCharacter;
     }
+
     public void setPlayableCharacter(PlayableCharacter playableCharacter) {
         this.playableCharacter = playableCharacter;
     }

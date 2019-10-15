@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class GameKeyboardHandler implements KeyboardHandler {
 
-private Rectangle character;
+    private Rectangle character;
 
     @Override
     public void keyPressed(KeyboardEvent e) {

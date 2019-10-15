@@ -11,7 +11,7 @@ public class Fernands extends Ghost {
     private GridPosition pos;
     private GhostType ghostType;
 
-    public Fernands(SimpleGfxGridPosition pos,GhostType ghostType) {
-        super(pos,ghostType);
+    public Fernands(SimpleGfxGridPosition pos, GhostType ghostType) {
+        super(pos, ghostType);
     }
 }

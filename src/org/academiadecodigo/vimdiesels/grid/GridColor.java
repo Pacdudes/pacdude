@@ -1,8 +1,5 @@
 package org.academiadecodigo.vimdiesels.grid;
 
-/**
- * The available grid colors
- */
 public enum GridColor {
     RED,
     GREEN,

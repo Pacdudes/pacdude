@@ -10,22 +10,11 @@ import org.academiadecodigo.vimdiesels.grid.GridDirection;
 import org.academiadecodigo.vimdiesels.grid.position.AbstractGridPosition;
 import org.academiadecodigo.vimdiesels.grid.position.GridPosition;
 
-/**
- * Simple graphics position
- */
 public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     private SimpleGfxGrid simpleGfxGrid;
     private Picture picture;
 
-
-    /**
-     * Simple graphics position constructor
-     *
-     * @param col  position column
-     * @param row  position row
-     * @param grid Simple graphics grid
-     */
     public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid, Picture picture) {
 
         super(col, row, grid);
@@ -43,10 +32,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     }
 
-
-    /**
-     * @see GridPosition#moveInDirection(GridDirection, int)
-     */
     @Override
     public void moveInDirection(GridDirection direction, int distance) {
 
@@ -55,19 +40,15 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
         super.moveInDirection(direction, distance);
 
-
-
         int dx = (getCol()-initialCol)* 35;
         int dy = (getRow()-initialRow)*35;
         this.picture.translate(dx,dy);
-
 
     }
 
     public SimpleGfxGrid getSimpleGfxGrid() {
         return simpleGfxGrid;
     }
-
 
     public Picture getPicture() {
         return picture;
